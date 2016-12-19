@@ -1,0 +1,8 @@
+.Navbar{
+  border-bottom: 1px solid grey;
+}
+
+.Navbar li.pt-tab{
+  font-size: 1.3rem !important;
+  margin-right: 2.5rem;
+}
