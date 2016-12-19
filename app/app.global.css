@@ -2,4 +2,7 @@
 
 * {
   margin: 0;
+  font-size: 16px;
 }
+
+@import "./containers/Login/Login.css";
