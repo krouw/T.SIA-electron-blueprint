@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {Link} from 'react-router';
-import LogoImg from './logo.png';
+import LogoImg from '../../logo.png';
 
 export default class Login extends Component {
   render() {
