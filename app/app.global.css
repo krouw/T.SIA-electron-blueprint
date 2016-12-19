@@ -9,6 +9,12 @@
   margin-top: 3em;
 }
 
+.test{
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+
 @import "./containers/Login/Login.css";
 @import "./components/Header/header.css";
 @import "./components/Navbar/Navbar.css";
+@import "./components/Impresiones/Impresiones.css";
