@@ -2,7 +2,8 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
-import Impresiones from '../components/Impresiones/Impresiones'
+import Impresiones from './Impresiones/Impresiones'
+import Historial from './Datatable/Historial'
 
 const Home = props => {
   return (
@@ -17,7 +18,7 @@ const Home = props => {
         <Impresiones />
       </TabPanel>
       <TabPanel>
-          Second panel
+        <Historial />
       </TabPanel>
       <TabPanel>
           Third panel

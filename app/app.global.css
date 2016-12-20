@@ -9,12 +9,17 @@
   margin-top: 3em;
 }
 
+.Layout{
+  background-color: #f5f8fa;
+  min-width: 100vh;
+}
+
 .test{
   border: 1px solid red;
   box-sizing: border-box;
 }
 
 @import "./containers/Login/Login.css";
+@import "./containers/Impresiones/Impresiones.css";
 @import "./components/Header/header.css";
 @import "./components/Navbar/Navbar.css";
-@import "./components/Impresiones/Impresiones.css";

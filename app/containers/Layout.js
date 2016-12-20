@@ -4,9 +4,9 @@ import {Grid,Row} from 'react-flexbox-grid';
 import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
 import Header from '../components/Header/Header';
 
-const Principal = props => {
+const Layout = props => {
   return (
-    <section>
+    <section className="Layout">
       <Header />
       <Row center="xs">
         <Grid className="Content">
@@ -17,4 +17,4 @@ const Principal = props => {
   );
 }
 
-export default Principal;
+export default Layout;
