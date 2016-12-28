@@ -4,3 +4,7 @@
 .Header-Logo img{
   height: 2.5em;
 }
+
+.Header .Header-Container{
+  height: 100%;
+}

@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
 import Impresiones from './Impresiones/Impresiones'
 import Historial from './Datatable/Historial'
