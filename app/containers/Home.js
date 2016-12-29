@@ -2,7 +2,7 @@
 import React from 'react';
 import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
 import Impresiones from '../components/Impresiones/Impresiones'
-import Historial from './Datatable/Historial'
+import Historial from '../components/Historial/Historial'
 
 const Home = props => {
   return (

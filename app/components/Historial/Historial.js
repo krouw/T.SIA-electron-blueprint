@@ -12,13 +12,17 @@ import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import InfoOutline from 'material-ui/svg-icons/action/info-outline';
 
 import DataTables from 'material-ui-datatables';
+import { Row, Col } from 'react-flexbox-grid';
+import {
+  Popover,
+  PopoverInteractionKind,
+  Position} from '@blueprintjs/core';
+import { DateRangePicker } from "@blueprintjs/datetime";
+
 
 const styles = {
   container: {
     textAlign: 'center',
-  },
-  component: {
-    margin: '60px 20px',
   }
 };
 
@@ -296,29 +300,52 @@ class Historial extends Component {
   }
 
   render() {
+    let prueba = new Date();
+    let popoverContent = (
+            <div>
+              <DateRangePicker />
+            </div>
+        );
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.component}>
-          <h2>DataTables (Filter & Column Sort & Styled Column)</h2>
-          <Card style={{margin: 12}}>
-            <DataTables
-              title={'Nutrition'}
-              height={'auto'}
-              selectable={false}
-              showRowHover={true}
-              columns={TABLE_COLUMNS_SORT_STYLE}
-              data={TABLE_DATA}
-              showCheckboxes={false}
-              showHeaderToolbar={true}
-              onCellClick={this.handleCellClick}
-              onCellDoubleClick={this.handleCellDoubleClick}
-              onFilterValueChange={this.handleFilterValueChange}
-              onSortOrderChange={this.handleSortOrderChange}
-              count={100}
-            />
-          </Card>
-        </div>
-      </MuiThemeProvider>
+      <section className="Historial">
+        <Row start="xs" bottom="sm" className="Historial-Filter">
+          <Col xs={12} sm={4}>
+            <label className="pt-label">
+              Buscar
+              <input className="pt-input" type="text" dir="auto" />
+            </label>
+          </Col>
+          <Col xs={12} sm={8}>
+            <Popover content={popoverContent}
+                     interactionKind={PopoverInteractionKind.CLICK}
+                     popoverClassName="pt-popover-content-sizing"
+                     position={Position.BOTTOM}
+                     useSmartPositioning={false}>
+                <button className="pt-button pt-large pt-intent-primary">Fecha Inicio</button>
+            </Popover>
+          </Col>
+        </Row>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div style={styles.component}>
+            <Card>
+              <DataTables
+                height={'auto'}
+                selectable={false}
+                showRowHover={true}
+                columns={TABLE_COLUMNS_SORT_STYLE}
+                data={TABLE_DATA}
+                showCheckboxes={false}
+                showHeaderToolbar={false}
+                onCellClick={this.handleCellClick}
+                onCellDoubleClick={this.handleCellDoubleClick}
+                onFilterValueChange={this.handleFilterValueChange}
+                onSortOrderChange={this.handleSortOrderChange}
+                count={100}
+              />
+            </Card>
+          </div>
+        </MuiThemeProvider>
+      </section>
     );
   }
 }

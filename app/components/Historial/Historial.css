@@ -1,0 +1,29 @@
+.Historial{
+  font-family: Roboto,sans-serif;
+}
+
+.Historial-Filter{
+  margin-bottom: 1em;
+}
+
+.Historial-Filter label{
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 23px;
+  color: #106BA3;
+}
+
+.Historial-Filter input{
+  width: 100%;
+}
+
+.Historial button{
+  margin-right: 1em;
+  margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+  .Historial button{
+    margin-top: 0;
+  }
+}

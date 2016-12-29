@@ -76,7 +76,8 @@ const Impresiones = props => {
           <Col xs={12} className="Impresiones-Content">
             <label className="pt-label">
               Observación
-              <textarea className="pt-input" dir="auto"></textarea>            </label>
+              <textarea className="pt-input" dir="auto"></textarea>
+            </label>
           </Col>
         </Row>
         <Row end="xs">
