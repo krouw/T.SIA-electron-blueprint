@@ -1,0 +1,74 @@
+.Impresiones{
+  font-family: Roboto,sans-serif;
+}
+
+.Impresiones-Contador{
+  margin-right: 1em;
+  padding: 1em;
+}
+
+.Impresiones-Contador h4{
+  font-size: 1.5em;
+  line-height: 17px;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+.Impresiones-Contador h2{
+  font-size: 4.5em;
+  line-height: 65px;
+  font-weight: 200;
+  margin-top: 1rem;
+}
+
+.Impresiones-Contador p{
+  font-size: 1em;
+  line-height: 24px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+.Impresiones-Contador button{
+  width: 100%;
+  max-width: 14em;
+}
+
+.Impresiones-Title{
+  width: 100%;
+  margin:0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.Impresiones-Title p{
+  margin: 0;
+  letter-spacing: 1px;
+  padding-left: 1em;
+  padding-right: 1em;
+  line-height: 23px;
+}
+
+.Impresiones-Nuevo{
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.Impresiones-Content input{
+  width: 100%;
+}
+
+.Impresiones-Content textarea{
+  width: 100%;
+}
+
+.Impresiones-Content label{
+  letter-spacing: 1px;
+  line-height: 23px;
+  color: #106BA3;
+}
+
+@media (min-width: 768px) {
+  .Impresiones-Nuevo {
+    margin-top: 0;
+  }
+}

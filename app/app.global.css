@@ -12,7 +12,9 @@
 }
 
 .Content{
-  margin-top: 3em;
+  margin-top: 2em;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .Layout{
@@ -26,6 +28,6 @@
 }
 
 @import "./containers/Login/Login.css";
-@import "./containers/Impresiones/Impresiones.css";
+@import "./components/Impresiones/Impresiones.css";
 @import "./components/Header/header.css";
 @import "./components/Navbar/Navbar.css";
