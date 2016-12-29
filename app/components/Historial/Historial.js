@@ -34,29 +34,29 @@ const muiTheme = getMuiTheme({
 
 const TABLE_COLUMNS = [
   {
-    key: 'name',
-    label: 'Dessert (100g serving)',
+    key: 'fecha',
+    label: 'Fecha',
   }, {
-    key: 'calories',
-    label: 'Calories',
+    key: 'rut',
+    label: 'Rut',
   }, {
-    key: 'fat',
-    label: 'Fat (g)',
+    key: 'nombre',
+    label: 'Nombre',
   }, {
-    key: 'carbs',
-    label: 'Carbs (g)',
+    key: 'rol',
+    label: 'Rol',
   }, {
-    key: 'protein',
-    label: 'Protein (g)',
+    key: 'hojas',
+    label: 'Hojas',
   }, {
-    key: 'sodium',
-    label: 'Sodium (mg)',
+    key: 'asignatura',
+    label: 'Asignatura',
   }, {
-    key: 'calcium',
+    key: 'Observación',
     label: 'Calcium (%)',
   }, {
-    key: 'iron',
-    label: 'Iron (%)',
+    key: '',
+    label: '',
   },
 ];
 
@@ -303,7 +303,7 @@ class Historial extends Component {
     let prueba = new Date();
     let popoverContent = (
             <div>
-              <DateRangePicker />
+              <DateRangePicker/>
             </div>
         );
     return (
@@ -318,11 +318,20 @@ class Historial extends Component {
           <Col xs={12} sm={8}>
             <Popover content={popoverContent}
                      interactionKind={PopoverInteractionKind.CLICK}
-                     popoverClassName="pt-popover-content-sizing"
+                     popoverClassName="DatePicker pt-popover-content-sizing"
                      position={Position.BOTTOM}
                      useSmartPositioning={false}>
-                <button className="pt-button pt-large pt-intent-primary">Fecha Inicio</button>
+              <div className="Historial-Fecha">
+                <span className="pt-tag pt-large pt-minimal">
+                  sin fecha
+                </span>
+                <span className="pt-icon-large pt-icon-arrow-right"></span>
+                <span className="pt-tag pt-large pt-minimal">
+                  sin fecha
+                </span>
+              </div>
             </Popover>
+            <button type="button" className="pt-button pt-icon-document pt-intent-success">Generar Reporte</button>
           </Col>
         </Row>
         <MuiThemeProvider muiTheme={muiTheme}>

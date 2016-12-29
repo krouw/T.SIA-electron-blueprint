@@ -20,7 +20,7 @@ const Home = props => {
         <Historial />
       </TabPanel>
       <TabPanel>
-          Third panel
+          Hello
       </TabPanel>
       <TabPanel>
           Fourth panel

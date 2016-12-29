@@ -22,8 +22,23 @@
   margin-top: 1em;
 }
 
+.DatePicker.pt-popover-content-sizing .pt-popover-content{
+  max-width: 100%;
+}
+
+.Historial-Filter span{
+  margin-right: 1em;
+}
+
+.Historial-Fecha{
+  margin-top: 1em;
+}
+
 @media (min-width: 768px) {
   .Historial button{
+    margin-top: 0;
+  }
+  .Historial-Fecha{
     margin-top: 0;
   }
 }
