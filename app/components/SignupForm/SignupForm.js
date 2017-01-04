@@ -23,12 +23,11 @@ export default class SignupForm extends Component {
     this.setState({ errors: {} });
     e.preventDefault();
     this.props.userSignupRequest(this.state)
-    .then(
-      () => {console.log('bueno')},
-      (err) => {
-        console.log(err);
-      }
-    );
+    .then((response) =>{
+      console.log('respuesta: '+response);
+    }).catch((err)=>{
+      console.log(err.response.data.invalidAttributes);
+    });
   }
 
   render() {
