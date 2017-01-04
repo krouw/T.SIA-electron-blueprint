@@ -10,6 +10,7 @@ export default class SignupForm extends Component {
       rut: '',
       email: '',
       password: '',
+      errors: {},
     }
 
   }
@@ -19,11 +20,19 @@ export default class SignupForm extends Component {
   }
 
   onSubmit(e){
+    this.setState({ errors: {} });
     e.preventDefault();
-    this.props.userSignipRequest(this.state);
+    this.props.userSignupRequest(this.state)
+    .then(
+      () => {console.log('bueno')},
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <form onSubmit={event => this.onSubmit(event)} className="pt-control-group pt-vertical">
         <div className="pt-input-group pt-large">
@@ -78,5 +87,5 @@ export default class SignupForm extends Component {
 }
 
 SignupForm.propTypes = {
-  userSignipRequest: React.PropTypes.func.isRequired
+  userSignupRequest: React.PropTypes.func.isRequired
 };

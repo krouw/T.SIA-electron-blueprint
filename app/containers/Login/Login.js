@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import SignupForm from '../../components/SignupForm/SignupForm'
 import LogoImg from '../../logo.png';
-import { loginServer, userSignipRequest } from '../../actions/auth'
+import { loginServer, userSignupRequest } from '../../actions/auth'
 import { connect } from 'react-redux'
 
 
 class Login extends Component {
   render() {
-    const { userSignipRequest } = this.props;
+    const { userSignupRequest } = this.props;
     return (
       <Row center="xs" middle="xs" style={{margin:0}}>
         <Col xs={10} sm={6} md={4}>
@@ -19,7 +19,7 @@ class Login extends Component {
             </div>
             <Row className="Login-Form" center="xs">
               <Col xs={12}>
-                <SignupForm userSignipRequest={userSignipRequest} />
+                <SignupForm userSignupRequest={userSignupRequest} />
               </Col>
             </Row>
           </div>
@@ -30,7 +30,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  userSignipRequest: React.PropTypes.func.isRequired
+  userSignupRequest: React.PropTypes.func.isRequired
 };
 
-export default connect((state) => { return {}},{ userSignipRequest })(Login);
+export default connect(null,{ userSignupRequest })(Login);

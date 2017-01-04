@@ -9,8 +9,8 @@ export function loginServer(data){
   }
 }
 
-export function userSignipRequest(userData){
-  return dispach =>{
+export function userSignupRequest(userData){
+  return dispach => {
     return axios.post('http://localhost:1337/auth/signup',userData);
   }
 }
