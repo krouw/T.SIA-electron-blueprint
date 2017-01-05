@@ -3,10 +3,21 @@ import { connect } from 'react-redux'
 import { Position, Toaster } from "@blueprintjs/core";
 
 class FlashMessagesList extends Component{
+  constructor(){
+    super();
+  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.message.size) {
-      this.props.message.forEach((toast) => {
+  componentDidMount() {
+    if (this.props.messages) {
+      this.props.messages.forEach((toast) => {
+        this.toaster.show(toast);
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    if (this.props.messages) {
+      this.props.messages.forEach((toast) => {
         this.toaster.show(toast);
       });
     }

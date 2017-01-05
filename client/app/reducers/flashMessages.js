@@ -8,7 +8,7 @@ export default (state = [], action = {}) => {
         ...state,
         {
           message: action.message.text,
-          intent: action.message.type
+          intent: action.message.intent
         }
       ];
     default:

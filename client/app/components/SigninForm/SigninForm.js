@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
+import { Intent } from '@blueprintjs/core'
 
 export default class SigninForm extends Component {
   constructor(){
@@ -26,7 +27,7 @@ export default class SigninForm extends Component {
     this.props.loginServer(userData)
     .then((response) => {
       this.props.addFlashMessage({
-        type: 'success',
+        intent: Intent.SUCCESS,
         text: 'Bienvenido a SIUTEM'
       })
       this.setState({isValid: true})

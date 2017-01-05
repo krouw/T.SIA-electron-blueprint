@@ -7,7 +7,6 @@ import { loginServer } from '../../actions/auth'
 import { addFlashMessage } from '../../actions/flashMessages'
 import { connect } from 'react-redux'
 
-
 class Login extends Component {
   render() {
     const { loginServer, addFlashMessage } = this.props;
