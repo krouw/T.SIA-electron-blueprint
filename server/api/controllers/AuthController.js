@@ -52,4 +52,9 @@ var passport = require('passport');
 	    passport.authenticate('local',
 	      _onPassportAuth.bind(this, req, res))(req, res);
 	  },
+		logout: function (req,res){
+			req.logout();
+			res.json(200,{action: 'AUTH_LOGOUT'});
+
+		}
 };
