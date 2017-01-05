@@ -41,14 +41,15 @@ var JWT_STRATEGY_CONFIG = {
         if (error) return next(error, false, {});
 
         if (!admin) return next(null, false, {
-          code: 'E_USER_NOT_FOUND',
-          message: email + ' No se ah encontrado'
+          code: 'AUTH_SIGNIN_NO_E',
+          message: 'Error con contraseña o email'
+          //message: email + ' No se ah encontrado'
         });
 
         // TODO: replace with new cipher service type
         if (!CipherService.comparePassword(password, admin))
           return next(null, false, {
-            code: 'E_WRONG_PASSWORD',
+            code: 'AUTH_SIGNIN_NO_E',
             message: 'Error con contraseña o email'
           });
 

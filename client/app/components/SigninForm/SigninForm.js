@@ -8,6 +8,7 @@ export default class SigninForm extends Component {
       email: '',
       password: '',
       errors: {},
+      isValid:true
     }
 
   }
@@ -28,16 +29,32 @@ export default class SigninForm extends Component {
         type: 'success',
         text: 'Bienvenido a SIUTEM'
       })
+      this.setState({isValid: true})
       hashHistory.push('/home')
     }).catch((err)=>{
-      console.log(err.response.data.invalidAttributes);
+      console.log(err.response);
+      if (err.response.data.code === "AUTH_SIGNIN_NO_E"){
+        this.setState({isValid: false})
+      }
+
     });
   }
 
   render() {
     const { errors } = this.state;
+
+    let err;
+    if (!this.state.isValid) {
+      err = (
+        <div style={{marginBottom: 16,}} className="pt-callout pt-intent-danger">
+          <strong>Advertencia!</strong> Problemas con el email y/o contraseña.
+        </div>
+      )
+    }
+
     return (
       <form onSubmit={event => this.onSubmit(event)} className="pt-control-group pt-vertical">
+        { err }
         <div className="pt-input-group pt-large">
           <span className="pt-icon pt-icon-person"></span>
           <input
