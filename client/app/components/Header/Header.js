@@ -16,7 +16,7 @@ export default class Header extends Component {
               <Col xs={6}>
                 <Link className="pt-button pt-minimal pt-icon-home"></Link>
                 <Link className="pt-button pt-minimal pt-icon-user"></Link>
-                <Link className="pt-button pt-minimal pt-icon-delete"></Link>
+                <Link to='/' className="pt-button pt-minimal pt-icon-delete"></Link>
               </Col>
             </Row>
           </Col>

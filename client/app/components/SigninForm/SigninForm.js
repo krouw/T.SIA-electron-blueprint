@@ -23,7 +23,11 @@ export default class SigninForm extends Component {
     Object.assign(userData,this.state);
     delete userData.errors;
     this.props.loginServer(userData)
-    .then((response) =>{
+    .then((response) => {
+      this.props.addFlashMessage({
+        type: 'success',
+        text: 'Bienvenido a SIUTEM'
+      })
       hashHistory.push('/home')
     }).catch((err)=>{
       console.log(err.response.data.invalidAttributes);
@@ -59,5 +63,6 @@ export default class SigninForm extends Component {
 }
 
 SigninForm.propTypes = {
-  loginServer: React.PropTypes.func.isRequired
+  loginServer: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 };

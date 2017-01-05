@@ -4,12 +4,13 @@ import {Row, Col} from 'react-flexbox-grid';
 import SigninForm from '../../components/SigninForm/SigninForm'
 import LogoImg from '../../logo.png';
 import { loginServer } from '../../actions/auth'
+import { addFlashMessage } from '../../actions/flashMessages'
 import { connect } from 'react-redux'
 
 
 class Login extends Component {
   render() {
-    const { loginServer } = this.props;
+    const { loginServer, addFlashMessage } = this.props;
     return (
       <Row center="xs" middle="xs" style={{margin:0}}>
         <Col xs={10} sm={6} md={4}>
@@ -19,7 +20,10 @@ class Login extends Component {
             </div>
             <Row className="Login-Form" center="xs">
               <Col xs={12}>
-                <SigninForm loginServer={loginServer} />
+                <SigninForm
+                  loginServer={loginServer}
+                  addFlashMessage={addFlashMessage}
+                />
               </Col>
             </Row>
           </div>
@@ -30,7 +34,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginServer: React.PropTypes.func.isRequired
+  loginServer: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 };
 
-export default connect(null,{ loginServer })(Login);
+export default connect(null,{ loginServer, addFlashMessage })(Login);

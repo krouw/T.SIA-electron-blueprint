@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 import { routerMiddleware, push } from 'react-router-redux';
 import createLogger from 'redux-logger';
-import rootReducer from '../reducers';
+import rootReducer from '../reducers/';
 
-import * as counterActions from '../actions/counter';
+import * as flashMessages from '../actions/flashMessages';
+import * as auth from '../actions/auth';
 
 const actionCreators = {
-  ...counterActions,
+  ...auth,
+  ...flashMessages,
   push,
 };
 
