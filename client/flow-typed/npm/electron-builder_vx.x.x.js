@@ -1,4 +1,4 @@
-// flow-typed signature: 75a75054a1591a659545806a9081daaf
+// flow-typed signature: b4f692d0f2e1bd0ede7fc397e47c24a8
 // flow-typed version: <<STUB>>/electron-builder_v^10.6.1/flow_v0.37.0
 
 /**
@@ -90,10 +90,6 @@ declare module 'electron-builder/out/options/macOptions' {
   declare module.exports: any;
 }
 
-declare module 'electron-builder/out/options/publishOptions' {
-  declare module.exports: any;
-}
-
 declare module 'electron-builder/out/options/winOptions' {
   declare module.exports: any;
 }
@@ -114,10 +110,6 @@ declare module 'electron-builder/out/platformPackager' {
   declare module.exports: any;
 }
 
-declare module 'electron-builder/out/publish/bintray' {
-  declare module.exports: any;
-}
-
 declare module 'electron-builder/out/publish/BintrayPublisher' {
   declare module.exports: any;
 }
@@ -127,10 +119,6 @@ declare module 'electron-builder/out/publish/gitHubPublisher' {
 }
 
 declare module 'electron-builder/out/publish/publisher' {
-  declare module.exports: any;
-}
-
-declare module 'electron-builder/out/publish/restApiRequest' {
   declare module.exports: any;
 }
 
@@ -206,11 +194,11 @@ declare module 'electron-builder/out/util/fs' {
   declare module.exports: any;
 }
 
-declare module 'electron-builder/out/util/httpRequest' {
+declare module 'electron-builder/out/util/log' {
   declare module.exports: any;
 }
 
-declare module 'electron-builder/out/util/log' {
+declare module 'electron-builder/out/util/nodeHttpExecutor' {
   declare module.exports: any;
 }
 
@@ -294,9 +282,6 @@ declare module 'electron-builder/out/options/linuxOptions.js' {
 declare module 'electron-builder/out/options/macOptions.js' {
   declare module.exports: $Exports<'electron-builder/out/options/macOptions'>;
 }
-declare module 'electron-builder/out/options/publishOptions.js' {
-  declare module.exports: $Exports<'electron-builder/out/options/publishOptions'>;
-}
 declare module 'electron-builder/out/options/winOptions.js' {
   declare module.exports: $Exports<'electron-builder/out/options/winOptions'>;
 }
@@ -312,9 +297,6 @@ declare module 'electron-builder/out/packager/mac.js' {
 declare module 'electron-builder/out/platformPackager.js' {
   declare module.exports: $Exports<'electron-builder/out/platformPackager'>;
 }
-declare module 'electron-builder/out/publish/bintray.js' {
-  declare module.exports: $Exports<'electron-builder/out/publish/bintray'>;
-}
 declare module 'electron-builder/out/publish/BintrayPublisher.js' {
   declare module.exports: $Exports<'electron-builder/out/publish/BintrayPublisher'>;
 }
@@ -323,9 +305,6 @@ declare module 'electron-builder/out/publish/gitHubPublisher.js' {
 }
 declare module 'electron-builder/out/publish/publisher.js' {
   declare module.exports: $Exports<'electron-builder/out/publish/publisher'>;
-}
-declare module 'electron-builder/out/publish/restApiRequest.js' {
-  declare module.exports: $Exports<'electron-builder/out/publish/restApiRequest'>;
 }
 declare module 'electron-builder/out/publish/uploader.js' {
   declare module.exports: $Exports<'electron-builder/out/publish/uploader'>;
@@ -381,11 +360,11 @@ declare module 'electron-builder/out/util/filter.js' {
 declare module 'electron-builder/out/util/fs.js' {
   declare module.exports: $Exports<'electron-builder/out/util/fs'>;
 }
-declare module 'electron-builder/out/util/httpRequest.js' {
-  declare module.exports: $Exports<'electron-builder/out/util/httpRequest'>;
-}
 declare module 'electron-builder/out/util/log.js' {
   declare module.exports: $Exports<'electron-builder/out/util/log'>;
+}
+declare module 'electron-builder/out/util/nodeHttpExecutor.js' {
+  declare module.exports: $Exports<'electron-builder/out/util/nodeHttpExecutor'>;
 }
 declare module 'electron-builder/out/util/promise.js' {
   declare module.exports: $Exports<'electron-builder/out/util/promise'>;

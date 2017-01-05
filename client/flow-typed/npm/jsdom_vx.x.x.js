@@ -1,4 +1,4 @@
-// flow-typed signature: e2e60a0bbfcfde807aa74e7d6a70b6fd
+// flow-typed signature: d38c86b031852b4d667ad4f9b2e99873
 // flow-typed version: <<STUB>>/jsdom_v^9.8.3/flow_v0.37.0
 
 /**
@@ -255,10 +255,6 @@ declare module 'jsdom/lib/jsdom/living/generated/EventModifierInit' {
 }
 
 declare module 'jsdom/lib/jsdom/living/generated/EventTarget' {
-  declare module.exports: any;
-}
-
-declare module 'jsdom/lib/jsdom/living/generated/FileReader' {
   declare module.exports: any;
 }
 
@@ -606,10 +602,6 @@ declare module 'jsdom/lib/jsdom/living/generated/MouseEventInit' {
   declare module.exports: any;
 }
 
-declare module 'jsdom/lib/jsdom/living/generated/MutationEvent' {
-  declare module.exports: any;
-}
-
 declare module 'jsdom/lib/jsdom/living/generated/Navigator' {
   declare module.exports: any;
 }
@@ -703,6 +695,10 @@ declare module 'jsdom/lib/jsdom/living/generated/UIEventInit' {
 }
 
 declare module 'jsdom/lib/jsdom/living/generated/utils' {
+  declare module.exports: any;
+}
+
+declare module 'jsdom/lib/jsdom/living/generated/Window' {
   declare module.exports: any;
 }
 
@@ -1440,9 +1436,6 @@ declare module 'jsdom/lib/jsdom/living/generated/EventModifierInit.js' {
 declare module 'jsdom/lib/jsdom/living/generated/EventTarget.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/EventTarget'>;
 }
-declare module 'jsdom/lib/jsdom/living/generated/FileReader.js' {
-  declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/FileReader'>;
-}
 declare module 'jsdom/lib/jsdom/living/generated/FocusEvent.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/FocusEvent'>;
 }
@@ -1701,9 +1694,6 @@ declare module 'jsdom/lib/jsdom/living/generated/MouseEvent.js' {
 declare module 'jsdom/lib/jsdom/living/generated/MouseEventInit.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/MouseEventInit'>;
 }
-declare module 'jsdom/lib/jsdom/living/generated/MutationEvent.js' {
-  declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/MutationEvent'>;
-}
 declare module 'jsdom/lib/jsdom/living/generated/Navigator.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/Navigator'>;
 }
@@ -1775,6 +1765,9 @@ declare module 'jsdom/lib/jsdom/living/generated/UIEventInit.js' {
 }
 declare module 'jsdom/lib/jsdom/living/generated/utils.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/utils'>;
+}
+declare module 'jsdom/lib/jsdom/living/generated/Window.js' {
+  declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/Window'>;
 }
 declare module 'jsdom/lib/jsdom/living/generated/WindowEventHandlers.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/generated/WindowEventHandlers'>;

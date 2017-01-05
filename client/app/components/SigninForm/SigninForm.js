@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { hashHistory } from 'react-router';
 
-export default class SignupForm extends Component {
+export default class SigninForm extends Component {
   constructor(){
     super();
     this.state = {
-      name: '',
-      username: '',
-      rut: '',
       email: '',
       password: '',
       errors: {},
@@ -25,9 +22,9 @@ export default class SignupForm extends Component {
     const userData = {};
     Object.assign(userData,this.state);
     delete userData.errors;
-    this.props.userSignupRequest(userData)
+    this.props.loginServer(userData)
     .then((response) =>{
-      console.log('respuesta: '+response);
+      hashHistory.push('/home')
     }).catch((err)=>{
       console.log(err.response.data.invalidAttributes);
     });
@@ -41,36 +38,9 @@ export default class SignupForm extends Component {
           <span className="pt-icon pt-icon-person"></span>
           <input
             onChange={ event => this.onChange(event) }
-            name="name" value={this.state.name}
+            name="email" value={this.state.name}
             type="text"
             className="pt-input"
-            placeholder="Nombre" />
-        </div>
-        <div className="pt-input-group pt-large">
-          <span className="pt-icon pt-icon-person"></span>
-          <input
-            onChange={ event => this.onChange(event)}
-            name="username" value={this.state.username}
-            type="text"
-            className="pt-input"
-            placeholder="Nombre de usuario" />
-        </div>
-        <div className="pt-input-group pt-large">
-          <span className="pt-icon pt-icon-person"></span>
-          <input
-            onChange={ event => this.onChange(event)}
-            name="rut" value={this.state.rut}
-            type="text"
-            className="pt-input"
-            placeholder="Rut" />
-        </div>
-        <div className="pt-input-group pt-large">
-          <span className="pt-icon pt-icon-mail"></span>
-          <input
-            onChange={ event => this.onChange(event)}
-            name="email"
-            value={this.state.email}
-            type="email" className="pt-input"
             placeholder="Email" />
         </div>
         <div className="pt-input-group pt-large">
@@ -88,6 +58,6 @@ export default class SignupForm extends Component {
   }
 }
 
-SignupForm.propTypes = {
-  userSignupRequest: React.PropTypes.func.isRequired
+SigninForm.propTypes = {
+  loginServer: React.PropTypes.func.isRequired
 };
