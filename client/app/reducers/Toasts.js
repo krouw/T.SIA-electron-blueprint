@@ -1,16 +1,18 @@
-import { ADD_FLASH_MESSAGE } from '../actions/types'
+import { ADD_TOASTS, CLEAR_TOASTS } from '../actions/types'
 import shortid from 'shortid'
 
 export default (state = [], action = {}) => {
   switch (action.type) {
-    case ADD_FLASH_MESSAGE:
+    case ADD_TOASTS:
         return [
         ...state,
         {
-          message: action.message.text,
-          intent: action.message.intent
+          message: action.toast.text,
+          intent: action.toast.intent
         }
       ];
+    case CLEAR_TOASTS:
+      return [];
     default:
       return state;
   }

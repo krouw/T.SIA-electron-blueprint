@@ -1,10 +1,10 @@
 // @flow
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import flashMessages from './flashMessages'
+import Toasts from './Toasts'
 
 const rootReducer = combineReducers({
-  flashMessages,
+  Toasts,
   routing
 });
 

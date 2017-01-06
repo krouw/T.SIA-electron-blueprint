@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Position, Toaster } from "@blueprintjs/core";
 
-class FlashMessagesList extends Component{
+class ToastList extends Component{
   constructor(){
     super();
   }
 
   componentDidMount() {
-    if (this.props.messages) {
-      this.props.messages.forEach((toast) => {
+    if (this.props.toasts) {
+      this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
     }
   }
 
   componentDidUpdate(prevProps,prevState) {
-    if (this.props.messages) {
-      this.props.messages.forEach((toast) => {
+    if (this.props.toasts) {
+      this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
     }
@@ -36,14 +36,14 @@ class FlashMessagesList extends Component{
   }
 }
 
-FlashMessagesList.propTypes = {
-  messages: React.PropTypes.array.isRequired
+ToastList.propTypes = {
+  toasts: React.PropTypes.array.isRequired
 }
 
 function mapStateToProps(state){
   return {
-    messages: state.flashMessages
+    toasts: state.Toasts
   }
 }
 
-export default connect(mapStateToProps)(FlashMessagesList);
+export default connect(mapStateToProps)(ToastList);

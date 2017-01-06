@@ -5,12 +5,12 @@ import { routerMiddleware, push } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers/';
 
-import * as flashMessages from '../actions/flashMessages';
+import * as Toasts from '../actions/Toasts';
 import * as auth from '../actions/auth';
 
 const actionCreators = {
   ...auth,
-  ...flashMessages,
+  ...Toasts,
   push,
 };
 

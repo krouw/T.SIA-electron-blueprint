@@ -26,13 +26,14 @@ export default class SigninForm extends Component {
     delete userData.errors;
     this.props.loginServer(userData)
     .then((response) => {
-      this.props.addFlashMessage({
+      this.props.addToast({
         intent: Intent.SUCCESS,
         text: 'Bienvenido a SIUTEM'
       })
       this.setState({isValid: true})
       hashHistory.push('/home')
-    }).catch((err)=>{
+    })
+    .catch((err)=>{
       console.log(err.response);
       if (err.response.data.code === "AUTH_SIGNIN_NO_E"){
         this.setState({isValid: false})
@@ -82,5 +83,5 @@ export default class SigninForm extends Component {
 
 SigninForm.propTypes = {
   loginServer: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired
+  addToast: React.PropTypes.func.isRequired
 };

@@ -1,1 +1,2 @@
-export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
+export const ADD_TOASTS = 'ADD_TOASTS';
+export const CLEAR_TOASTS = 'CLEAR_TOASTS';
