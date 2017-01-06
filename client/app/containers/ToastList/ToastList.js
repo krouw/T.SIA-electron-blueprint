@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Position, Toaster } from "@blueprintjs/core";
+import { clearToasts } from '../../actions/Toasts'
 
 class ToastList extends Component{
   constructor(){
@@ -12,6 +13,7 @@ class ToastList extends Component{
       this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
+      this.props.clearToasts();
     }
   }
 
@@ -20,6 +22,7 @@ class ToastList extends Component{
       this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
+      //falta aplicar clearToasts
     }
   }
 
@@ -37,7 +40,8 @@ class ToastList extends Component{
 }
 
 ToastList.propTypes = {
-  toasts: React.PropTypes.array.isRequired
+  toasts: React.PropTypes.array.isRequired,
+  clearToasts: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state){
@@ -46,4 +50,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(ToastList);
+export default connect(mapStateToProps, { clearToasts })(ToastList);
