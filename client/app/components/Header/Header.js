@@ -3,8 +3,17 @@ import React, { Component } from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import {Link} from 'react-router';
 import LogoImg from '../../logo.png';
+import { connect } from 'react-redux'
+import { logout } from '../../actions/auth'
+import { hashHistory } from 'react-router';
 
-export default class Header extends Component {
+class Header extends Component {
+  logout(e){
+    e.preventDefault();
+    this.props.logout();
+    hashHistory.push('/')
+  }
+
   render() {
     return (
         <Row center="xs" className="Header pt-navbar" style={{margin:0}}>
@@ -16,7 +25,7 @@ export default class Header extends Component {
               <Col xs={6}>
                 <Link className="pt-button pt-minimal pt-icon-home"></Link>
                 <Link className="pt-button pt-minimal pt-icon-user"></Link>
-                <Link to='/' className="pt-button pt-minimal pt-icon-delete"></Link>
+                <a className="pt-button pt-minimal pt-icon-delete" onClick={event => this.logout(event)}></a>
               </Col>
             </Row>
           </Col>
@@ -24,3 +33,6 @@ export default class Header extends Component {
     );
   }
 }
+
+
+export default connect(null,{ logout })(Header);

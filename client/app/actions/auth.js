@@ -12,7 +12,7 @@ export function setCurrentUser(user){
 }
 
 export function loginServer(data){
-  return dispach =>{
+  return dispatch =>{
     return axios.post('http://localhost:1337/auth/signin',data)
     .then(res =>{
       const token = res.data.token;
@@ -25,7 +25,15 @@ export function loginServer(data){
 }
 
 export function userSignupRequest(userData){
-  return dispach => {
+  return dispatch => {
     return axios.post('http://localhost:1337/auth/signup',userData);
+  }
+}
+
+export function logout(){
+  return dispatch => {
+    localStorage.removeItem('jwToken');
+    setAuthorizacionToken(false);
+    dispatch(setCurrentUser({}));
   }
 }
