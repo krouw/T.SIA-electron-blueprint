@@ -79,5 +79,9 @@ export default validate(merge(baseConfig, {
   ],
 
   // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
-  target: 'electron-renderer'
+  target: 'electron-renderer',
+  node: {
+    net: 'empty',
+    dns: 'empty',
+  }
 }));
