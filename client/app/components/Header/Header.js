@@ -34,5 +34,8 @@ class Header extends Component {
   }
 }
 
+Header.propTypes = {
+  logout: React.PropTypes.func.isRequired,
+}
 
 export default connect(null,{ logout })(Header);
