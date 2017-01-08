@@ -53,10 +53,7 @@
   margin-top: 1em;
 }
 
-.Impresiones-Content input{
-  width: 100%;
-}
-
+.Impresiones-Content input,
 .Impresiones-Content textarea{
   width: 100%;
 }

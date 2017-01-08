@@ -21,10 +21,10 @@ export default class SigninForm extends Component {
   onSubmit(e){
     this.setState({ errors: {} });
     e.preventDefault();
-    const userData = {};
-    Object.assign(userData,this.state);
-    delete userData.errors;
-    this.props.loginServer(userData)
+    const adminData = {};
+    Object.assign(adminData,this.state);
+    delete adminData.errors;
+    this.props.loginServer(adminData)
     .then((response) => {
       this.props.addToast({
         intent: Intent.SUCCESS,
