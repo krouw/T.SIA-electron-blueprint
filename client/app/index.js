@@ -20,6 +20,7 @@ if(localStorage.jwToken){
   setAuthorizacionToken(localStorage.jwToken)
   const user = jwtDecode(localStorage.jwToken);
   store.dispatch(setCurrentUser(user.admin));
+  hashHistory.push('/home');
 }
 
 render(
