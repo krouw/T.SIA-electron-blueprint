@@ -17,7 +17,7 @@ const Home = props => {
         <Impresiones />
       </TabPanel>
       <TabPanel>
-        Hello
+        <Historial/>
       </TabPanel>
       <TabPanel>
           Hello
