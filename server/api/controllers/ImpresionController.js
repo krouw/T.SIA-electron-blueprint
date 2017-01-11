@@ -19,14 +19,14 @@ module.exports = {
 		  user.impresion.add(impresion);
   		user.save( function(err){
         if(err){
-          return res.json(err);
+          return res.send(400, { err: 'Datos Faltantes' });
     		 }
         return res.send(201);
       })
 		 })
 		 .fail(function(err) {
 			 sails.log.error('Unexpected error: ' +err);
-       return res.send(500)
+       return res.send(404, { err: 'usuario no encontrado' })
 		 });
 	 },
 };
