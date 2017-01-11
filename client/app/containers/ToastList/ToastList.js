@@ -22,7 +22,6 @@ class ToastList extends Component{
       this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
-      console.log('hola');
       this.props.clearToasts();
     }
   }

@@ -12,7 +12,7 @@ class ImpresionesNuevo extends Component {
       name: '',
       rol: '',
       carrera: '',
-      hojas: '',
+      cantidad: '',
       asignatura: '',
       observacion: '',
     }
@@ -20,8 +20,12 @@ class ImpresionesNuevo extends Component {
 
   submitUser(e){
     e.preventDefault();
-    const userData = {};
-    Object.assign(userData,this.state);
+    const userData = {
+      rut: this.state.rut,
+      name: this.state.name,
+      rol: this.state.rol,
+      carrera: this.state.carrera,
+    };
     this.props.addUser(userData).then(
       res =>{
         this.props.addToast({
@@ -31,6 +35,13 @@ class ImpresionesNuevo extends Component {
       },
       err => console.log(err.response)
     );
+  }
+
+  submitImpresion(e){
+    e.preventDefault();
+    const impresionData = {
+
+    };
   }
 
   onChange(e){
@@ -112,25 +123,44 @@ class ImpresionesNuevo extends Component {
           <Col xs={12} sm={4} className="Impresiones-Content">
             <label className="pt-label">
               Cantidad Hojas
-              <input className="pt-input" type="text" dir="auto" />
+              <input
+                onChange={ e => this.onChange(e) }
+                name="cantidad"
+                value={this.state.cantidad}
+                className="pt-input"
+                type="text" dir="auto" />
             </label>
           </Col>
           <Col xs={12} sm={8} className="Impresiones-Content">
             <label className="pt-label">
               Asigantura
-              <input className="pt-input" type="text" dir="auto" />
+              <input
+                onChange={ e => this.onChange(e) }
+                name="asignatura"
+                value={this.state.asignatura}
+                className="pt-input"
+                type="text" dir="auto" />
             </label>
           </Col>
           <Col xs={12} className="Impresiones-Content">
             <label className="pt-label">
               Observación
-              <textarea className="pt-input" dir="auto"></textarea>
+              <textarea
+                onChange={ e => this.onChange(e) }
+                name="observacion"
+                value={this.state.observacion}
+                className="pt-input"
+                dir="auto"></textarea>
             </label>
           </Col>
         </Row>
         <Row end="xs">
           <Col xs={12} >
-            <button type="button" className="pt-button pt-intent-success">Ingresar Impresión</button>
+            <button
+              type="button"
+              className="pt-button pt-intent-success"
+              onClick={ e => this.submitImpresion(e) }
+              >Ingresar Impresión</button>
           </Col>
         </Row>
       </form>
@@ -139,7 +169,8 @@ class ImpresionesNuevo extends Component {
 
 ImpresionesNuevo.propTypes = {
   addUser: React.PropTypes.func.isRequired,
-  addToast: React.PropTypes.func.isRequired
+  addToast: React.PropTypes.func.isRequired,
+  addImpresion: React.PropTypes.func.isRequired,
 }
 
 export default ImpresionesNuevo;
