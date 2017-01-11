@@ -32,9 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'POST /user/:rut/impresion': 'ImpresionController.associateImpresionToUser',
 
   /***************************************************************************
   *                                                                          *

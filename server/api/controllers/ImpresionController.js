@@ -6,20 +6,27 @@
  */
 
 module.exports = {
-/*
-	associateImpresionToUser: function(req,res,next){
-		 var impresion_id = req.param('pet_id');
-		 var user_id = req.param('user_id');
 
-		 User.findOne({id:user_id}).then(function(user) {
-			 user.impresion.add(impresion_id);
-			 return user.save().fail(function() {
-				 sails.log.info('User already has that impresion!');
-			 });
+	associateImpresionToUser: function(req,res,next){
+    var user_rut = req.params['rut'];
+		User.findOne({rut:user_rut}).then(function(user) {
+      var impresion = {
+        user: user.id,
+        cantidad: req.body.cantidad,
+        asignatura: req.body.asignatura,
+        observacion: req.body.observacion
+      }
+		  user.impresion.add(impresion);
+  		user.save( function(err){
+        if(err){
+          return res.json(err);
+    		 }
+        return res.send(201);
+      })
 		 })
 		 .fail(function(err) {
 			 sails.log.error('Unexpected error: ' +err);
+       return res.send(500)
 		 });
-	 }
-*/
+	 },
 };
