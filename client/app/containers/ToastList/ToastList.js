@@ -8,24 +8,15 @@ class ToastList extends Component{
     super();
   }
 
-  componentDidMount() {
-    if (this.props.toasts) {
+  componentDidUpdate(prevProps,prevState) {
+      if (this.props.toasts) {
       this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
+      console.log('hola');
       this.props.clearToasts();
     }
   }
-
-  componentDidUpdate(prevProps,prevState) {
-    if (this.props.toasts) {
-      this.props.toasts.forEach((toast) => {
-        this.toaster.show(toast);
-      });
-      //falta aplicar clearToasts
-    }
-  }
-
   refHandlers = {
     toaster: el => (this.toaster = el),
   };

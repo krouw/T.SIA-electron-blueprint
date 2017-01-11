@@ -5,6 +5,7 @@ import ImpresionesContador from '../../components/ImpresionesContador/Impresione
 import ImpresionesNuevo from '../../components/ImpresionesNuevo/ImpresionesNuevo'
 import { connect } from 'react-redux'
 import { addUser } from '../../actions/Impresiones'
+import { addToast } from '../../actions/Toasts'
 
 class Impresiones extends Component {
   render(){
@@ -14,7 +15,10 @@ class Impresiones extends Component {
           <ImpresionesContador />
         </Col>
         <Col className="pt-card pt-elevation-1 Impresiones-Nuevo" xs={12} sm={8}>
-          <ImpresionesNuevo addUser={this.props.addUser} />
+          <ImpresionesNuevo
+            addUser={this.props.addUser}
+            addToast={this.props.addToast}
+          />
         </Col>
       </Row>
     )}
@@ -22,6 +26,7 @@ class Impresiones extends Component {
 
 Impresiones.propTypes = {
   addUser: React.PropTypes.func.isRequired,
+  addToast: React.PropTypes.func.isRequired,
 }
 
-export default connect(null, { addUser })(Impresiones);
+export default connect(null, { addUser, addToast })(Impresiones);

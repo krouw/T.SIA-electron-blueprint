@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
-import {MenuDivider} from '@blueprintjs/core';
+import { MenuDivider, Intent } from '@blueprintjs/core';
 
 class ImpresionesNuevo extends Component {
 
@@ -20,7 +20,12 @@ class ImpresionesNuevo extends Component {
     const userData = {};
     Object.assign(userData,this.state);
     this.props.addUser(userData).then(
-      res => console.log(res),
+      res =>{
+        this.props.addToast({
+          intent: Intent.PRIMARY,
+          text: 'Usuario Agregado'
+        })
+      },
       err => console.log(err.response)
     );
   }
@@ -131,6 +136,7 @@ class ImpresionesNuevo extends Component {
 
 ImpresionesNuevo.propTypes = {
   addUser: React.PropTypes.func.isRequired,
+  addToast: React.PropTypes.func.isRequired
 }
 
 export default ImpresionesNuevo;
