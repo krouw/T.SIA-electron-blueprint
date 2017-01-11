@@ -4,7 +4,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import ImpresionesContador from '../../components/ImpresionesContador/ImpresionesContador'
 import ImpresionesNuevo from '../../components/ImpresionesNuevo/ImpresionesNuevo'
 import { connect } from 'react-redux'
-import { addUser } from '../../actions/Impresiones'
+import { addUser } from '../../actions/User'
 import { addToast } from '../../actions/Toasts'
 
 class Impresiones extends Component {

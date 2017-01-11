@@ -11,7 +11,10 @@ class ImpresionesNuevo extends Component {
       rut: '',
       name: '',
       rol: '',
-      carrera: ''
+      carrera: '',
+      hojas: '',
+      asignatura: '',
+      observacion: '',
     }
   }
 
