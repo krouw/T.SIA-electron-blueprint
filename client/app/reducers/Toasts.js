@@ -9,9 +9,14 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case ADD_TOASTS:
       return {
+        ...state,
+        toastQueue: [...state.toastQueue, action.toast]
       };
     case CLEAR_TOASTS:
-      return {};
+      return {
+        ...state,
+        toastQueue: [],
+      };
     default:
       return state;
   }

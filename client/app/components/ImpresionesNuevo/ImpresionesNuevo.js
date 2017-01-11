@@ -23,7 +23,7 @@ class ImpresionesNuevo extends Component {
       res =>{
         this.props.addToast({
           intent: Intent.PRIMARY,
-          text: 'Usuario Agregado'
+          message: 'Usuario Agregado'
         })
       },
       err => console.log(err.response)

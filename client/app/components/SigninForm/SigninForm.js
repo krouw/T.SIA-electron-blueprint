@@ -28,7 +28,7 @@ export default class SigninForm extends Component {
     .then((response) => {
       this.props.addToast({
         intent: Intent.SUCCESS,
-        text: 'Bienvenido a SIUTEM'
+        message: 'Bienvenido a SIUTEM'
       })
       this.setState({isValid: true})
       hashHistory.push('/home')

@@ -4,12 +4,21 @@ import { Position, Toaster } from "@blueprintjs/core";
 import { clearToasts } from '../../actions/Toasts'
 
 class ToastList extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+    if (this.props.toasts.length > 0) {
+      this.props.toasts.forEach((toast) => {
+        this.toaster.show(toast);
+      });
+      this.props.clearToasts();
+    }
   }
 
   componentDidUpdate(prevProps,prevState) {
-      if (this.props.toasts) {
+    if (this.props.toasts.length > 0) {
       this.props.toasts.forEach((toast) => {
         this.toaster.show(toast);
       });
@@ -17,6 +26,7 @@ class ToastList extends Component{
       this.props.clearToasts();
     }
   }
+
   refHandlers = {
     toaster: el => (this.toaster = el),
   };
@@ -37,7 +47,7 @@ ToastList.propTypes = {
 
 function mapStateToProps(state){
   return {
-    toasts: state.Toasts
+    toasts: state.Toasts.toastQueue
   }
 }
 
