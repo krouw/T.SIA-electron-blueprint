@@ -1,8 +1,7 @@
 import axios from 'axios'
 
-export function addImpresion(data){
-  console.log(data);
+export function addImpresion(data,user){
   return dispatch => {
-    return axios.post('http://localhost:1337/admin/',data)
+    return axios.post(`http://localhost:1337/user/${user}/impresion`,data);
   }
 }

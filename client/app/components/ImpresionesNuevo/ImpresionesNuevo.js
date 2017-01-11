@@ -27,8 +27,9 @@ class ImpresionesNuevo extends Component {
       carrera: this.state.carrera,
     };
     this.props.addUser(userData).then(
-      res =>{
+      res => {
         this.props.addToast({
+          iconName: "pt-icon-person",
           intent: Intent.PRIMARY,
           message: 'Usuario Agregado'
         })
@@ -40,8 +41,28 @@ class ImpresionesNuevo extends Component {
   submitImpresion(e){
     e.preventDefault();
     const impresionData = {
-
+      cantidad: this.state.cantidad,
+      asignatura: this.state.asignatura,
+      observacion: this.state.observacion
     };
+    this.props.addImpresion(impresionData, this.state.rut).then(
+      res => {
+        this.props.addToast({
+          iconName: "pt-icon-tick",
+          intent: Intent.SUCCESS,
+          message: 'Impresion Registrada con Éxito!'
+        })
+      },
+      err => {
+        if(err.response.status === 404){
+          this.props.addToast({
+            iconName: "warning-sign",
+            intent: Intent.DANGER,
+            message: 'Usuario no Encontrado'
+          })
+        }
+      }
+    );
   }
 
   onChange(e){
@@ -159,8 +180,9 @@ class ImpresionesNuevo extends Component {
             <button
               type="button"
               className="pt-button pt-intent-success"
-              onClick={ e => this.submitImpresion(e) }
-              >Ingresar Impresión</button>
+              onClick={ e => this.submitImpresion(e) }>
+              Ingresar Impresión
+            </button>
           </Col>
         </Row>
       </form>
