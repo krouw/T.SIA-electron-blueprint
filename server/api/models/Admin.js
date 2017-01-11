@@ -21,18 +21,9 @@ module.exports = {
  	  		unique: true,
  	      required: true
  	  	},
-       username:{
-         type:'string',
-         unique: true,
-         required:true
-       },
        password:{
          type:'string',
          required: true
-       },
-       impresion:{
-         collection: 'impresion',
-         via: 'admin'
        },
        toJSON: function () {
           var obj = this.toObject();

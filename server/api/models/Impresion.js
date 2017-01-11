@@ -22,9 +22,6 @@ module.exports = {
       },
       user:{
         model: 'user'
-      },
-      admin:{
-        model: 'admin'
       }
     }
 };
