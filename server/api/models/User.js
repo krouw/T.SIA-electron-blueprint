@@ -14,7 +14,8 @@ module.exports = {
 	  	},
       rut:{
         type:'string',
-        required:true
+        required:true,
+        unique: true,
       },
       carrera:{
         type:'string',
