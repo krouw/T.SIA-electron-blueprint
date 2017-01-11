@@ -10,6 +10,7 @@ import {Card, CardHeader} from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import InfoOutline from 'material-ui/svg-icons/action/info-outline';
+import axios from 'axios';
 
 import DataTables from 'material-ui-datatables';
 import { Row, Col } from 'react-flexbox-grid';
@@ -45,195 +46,135 @@ const TABLE_COLUMNS = [
   }, {
     key: 'rol',
     label: 'Rol',
-  }, {
-    key: 'hojas',
-    label: 'Hojas',
-  }, {
+  },{
     key: 'asignatura',
     label: 'Asignatura',
   }, {
-    key: 'Observación',
-    label: 'Calcium (%)',
+    key: 'observacion',
+    label: 'Observacion',
   }, {
-    key: '',
-    label: '',
+    key: 'hojas',
+    label: 'Hojas',
   },
+
 ];
 
 const TABLE_COLUMNS_TOOLTIP = [
   {
-    key: 'name',
-    label: 'Dessert (100g serving)',
-    tooltip: 'Dessert (100g serving)',
+    key: 'fecha',
+    label: 'Fecha',
+    tooltip: 'Fecha',
   }, {
-    key: 'calories',
-    label: 'Calories',
-    tooltip: 'Calories',
+    key: 'rut',
+    label: 'Rut',
+    tooltip: 'Rut',
   }, {
-    key: 'fat',
-    label: 'Fat (g)',
-    tooltip: 'Fat (g)',
+    key: 'nombre',
+    label: 'Nombre',
+    tooltip: 'Nombre',
   }, {
-    key: 'carbs',
-    label: 'Carbs (g)',
-    tooltip: 'Carbs (g)',
+    key: 'rol',
+    label: 'Rol',
+    tooltip: 'Rol',
+  },{
+    key: 'asignatura',
+    label: 'Asignatura',
+    tooltip: 'Asignatura',
   }, {
-    key: 'protein',
-    label: 'Protein (g)',
-    tooltip: 'Protein (g)',
+    key: 'observación',
+    label: 'Obervacion',
+    tooltip: 'Observacion',
   }, {
-    key: 'sodium',
-    label: 'Sodium (mg)',
-    tooltip: 'Sodium (mg)',
-  }, {
-    key: 'calcium',
-    label: 'Calcium (%)',
-    tooltip: 'Calcium (%)',
-  }, {
-    key: 'iron',
-    label: 'Iron (%)',
-    tooltip: 'Iron (%)',
+    key: 'hojas',
+    label: 'Hojas',
+    tooltip: 'Hojas',
   },
 ];
 
 const TABLE_COLUMNS_SORT_STYLE = [
   {
-    key: 'name',
-    label: 'Dessert (100g serving)',
+    key: 'fecha',
+    label: 'Fecha',
     sortable: true,
     style: {
-      width: 250,
+      width: 80,
     }
   }, {
-    key: 'calories',
-    label: 'Calories',
+    key: 'rut',
+    label: 'Rut',
     sortable: true,
+    style: {
+      width: 85,
+    }
   }, {
-    key: 'fat',
-    label: 'Fat (g)',
+    key: 'nombre',
+    label: 'Nombre',
+    sortable: true,
+    style: {
+      width: 155,
+    }
   }, {
-    key: 'carbs',
-    label: 'Carbs (g)',
+    key: 'rol',
+    label: 'Rol',
+    style: {
+      width: 80,
+    }
   }, {
-    key: 'protein',
-    label: 'Protein (g)',
-  }, {
-    key: 'sodium',
-    label: 'Sodium (mg)',
-  }, {
-    key: 'calcium',
-    label: 'Calcium (%)',
-  }, {
-    key: 'iron',
-    label: 'Iron (%)',
+    key: 'asignatura',
+    label: 'Asignatura',
+    style: {
+      width: 110,
+    }
   },
+  {
+    key: 'observacion',
+    label: 'Obervacion',
+    style: {
+      width: 180,
+    }
+  }, {
+    key: 'hojas',
+    label: 'Hojas',
+    style: {
+      width: 70,
+    }
+  }
 ];
 
 const TABLE_DATA = [
   {
-    name: 'Frozen yogurt',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Ice cream sandwich',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Eclair',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Cupcake',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Gingerbread',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Jelly bean',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Lollipop',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Honeycomb',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'Donut',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  }, {
-    name: 'KitKat',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
+    fecha: '20/01/2017',
+    rut: '18082418-9',
+    nombre: 'Carlos Riquelme Labrin ',
+    rol: 'estudiante',
+    asignatura: 'programacion',
+    observacion: 'tarea arboles binarios',
+    hojas: '10',
+  },
+  {
+    fecha: '21/01/2017',
+    rut: '18082418-9',
+    nombre: 'felipe rubio',
+    rol: 'estudiante',
+    asignatura: 'programacion',
+    observacion: 'tarea arboles binarios',
+    hojas: '10',
+  },
+  {
+    fecha: '22/01/2017',
+    rut: '18082418-9',
+    nombre: 'tomas riquelme',
+    rol: 'estudiante',
+    asignatura: 'programacion',
+    observacion: 'tarea arboles binarios',
+    hojas: '10',
   },
 ];
 
 const TABLE_DATA_NEXT = [
   {
-    name: 'Marshmallow',
-    calories: '159',
-    fat: '6.0',
-    carbs: '24',
-    protein: '4.0',
-    sodium: '87',
-    calcium: '14%',
-    iron: '1%',
-  },
+
+  }
 ];
 
 class Historial extends Component {
@@ -248,10 +189,13 @@ class Historial extends Component {
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
     this.handlePersonAddClick = this.handlePersonAddClick.bind(this);
     this.handleInfoClick = this.handleInfoClick.bind(this);
-
+    axios.get('http://localhost:1337/impresion',(res)=>{
+      console.log(res);
+    });
     this.state = {
       data: TABLE_DATA,
       page: 1,
+      search: "",
     };
   }
 
@@ -259,8 +203,9 @@ class Historial extends Component {
     console.log('key:' + key + ' order: ' + order);
   }
 
-  handleFilterValueChange(value) {
+  handleFilterValueChange(e) {
     console.log('filter value: ' + value);
+    this.setState({[e.target.search]: e.target.value});
   }
 
   handleCellClick(rowIndex, columnIndex, row, column) {
@@ -312,7 +257,7 @@ class Historial extends Component {
           <Col xs={12} sm={4}>
             <label className="pt-label">
               Buscar
-              <input className="pt-input" type="text" dir="auto" />
+              <input className="pt-input" type="text" dir="auto" onFilterValueChange={ (e) => this.onFilterValueChange(e) } value={this.state.search}/>
             </label>
           </Col>
           <Col xs={12} sm={8}>
@@ -349,7 +294,7 @@ class Historial extends Component {
                 onCellDoubleClick={this.handleCellDoubleClick}
                 onFilterValueChange={this.handleFilterValueChange}
                 onSortOrderChange={this.handleSortOrderChange}
-                count={100}
+                count={3}
               />
             </Card>
           </div>
