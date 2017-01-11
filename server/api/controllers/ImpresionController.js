@@ -25,7 +25,6 @@ module.exports = {
       })
 		 })
 		 .fail(function(err) {
-			 sails.log.error('Unexpected error: ' +err);
        return res.send(404, { err: 'usuario no encontrado' })
 		 });
 	 },
