@@ -31,7 +31,9 @@ class Impresiones extends Component {
     return (
       <Row className="Impresiones" between="xs" style={{margin:0}}>
         <Col className="pt-card pt-elevation-1 Impresiones-Contador" xs={12} sm>
-          hello
+          <ImpresionesContador
+            data={this.props.contador}
+          />
         </Col>
         <Col className="pt-card pt-elevation-1 Impresiones-Nuevo" xs={12} sm={8}>
           <ImpresionesNuevo

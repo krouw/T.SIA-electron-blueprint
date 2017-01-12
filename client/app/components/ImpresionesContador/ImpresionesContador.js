@@ -9,38 +9,53 @@ class ImpresionesContador extends Component {
 
   render(){
     let content = ''
-    if(this.props.isActive){
+    if(!this.props.data.isContador){
       content = (
         <div>
-          <h4>JORNADA INICIADA</h4>
-          <h2 className="is-active">
-            {this.props.contadorInicial}
-            <span>
-              /2525
-            </span>
-          </h2>
-          <p className="is-active">cont. Actual</p>
+          <h4>BIENVENIDO!</h4>
+          <h2>No hay registros</h2>
           <button
             type="button"
-            className="pt-button pt-large pt-intent-danger">
-            Cerrar Jornada
+            className="pt-button pt-large pt-intent-success">
+            Primera Jornada!
           </button>
         </div>
       )
     }
-    else {
-      content = (
-        <div>
-          <h4>ÚLTIMA JORNADA</h4>
-          <h2>{this.props.contadorFinal}</h2>
-          <p>{this.props.fecha}</p>
-          <button
-            type="button"
-            className="pt-button pt-large pt-intent-success">
-            Iniciar Jornada
-          </button>
-        </div>
-      )
+    else{
+      if(this.props.data.isActive){
+        content = (
+          <div>
+            <h4>JORNADA INICIADA</h4>
+            <h2 className="is-active">
+              {this.props.data.contadorInicial}
+              <span>
+                /2525
+              </span>
+            </h2>
+            <p className="is-active">cont. Actual</p>
+            <button
+              type="button"
+              className="pt-button pt-large pt-intent-danger">
+              Cerrar Jornada
+            </button>
+          </div>
+        )
+      }
+      else {
+        content = (
+          <div>
+            <h4>ÚLTIMA JORNADA</h4>
+            <h2>{this.props.data.contadorFinal}</h2>
+            <p>{this.props.data.fecha}</p>
+            <button
+              type="button"
+              className="pt-button pt-large pt-intent-success">
+              Iniciar Jornada
+            </button>
+          </div>
+        )
+      }
     }
 
     return (
@@ -53,10 +68,7 @@ class ImpresionesContador extends Component {
 }
 
 ImpresionesContador.propTypes = {
-  isActive: React.PropTypes.bool.isRequired,
-  contadorInicial: React.PropTypes.string,
-  contadorFinal: React.PropTypes.string,
-  fecha: React.PropTypes.sting,
+  data: React.PropTypes.object.isRequired,
 }
 
 export default ImpresionesContador;
