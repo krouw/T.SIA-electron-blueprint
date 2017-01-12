@@ -6,7 +6,8 @@ import ImpresionesNuevo from '../../components/ImpresionesNuevo/ImpresionesNuevo
 import { connect } from 'react-redux'
 import { addUser } from '../../actions/User'
 import { addToast } from '../../actions/Toasts'
-import { addImpresion, getContador } from '../../actions/Impresiones'
+import { addImpresion } from '../../actions/Impresiones'
+import { getContador } from '../../actions/Contador'
 import isEmpty from 'lodash/isEmpty'
 
 class Impresiones extends Component {
@@ -62,4 +63,13 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, { addUser, addToast , addImpresion, getContador })(Impresiones);
+function mapDispatchToProps(dispatch){
+  return {
+    addUser: (userData) => dispatch(addUser(userData)),
+    addToast: (toast) => dispatch(addToast(toast)),
+    addImpresion: (impresionData, rutUser) => dispatch(addImpresion(impresionData, rutUser)),
+    getContador: () => dispatch(getContador()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Impresiones);

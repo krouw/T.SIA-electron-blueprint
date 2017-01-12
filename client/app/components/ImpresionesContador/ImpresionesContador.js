@@ -6,17 +6,18 @@ class ImpresionesContador extends Component {
   constructor(props){
     super(props);
   }
-
+  
   render(){
     let content = ''
     if(!this.props.data.isContador){
       content = (
         <div>
           <h4>BIENVENIDO!</h4>
-          <h2>No hay registros</h2>
+          <h2 style={{fontSize:32}}>No hay registros</h2>
           <button
             type="button"
-            className="pt-button pt-large pt-intent-success">
+            className="pt-button pt-large pt-intent-success"
+            >
             Primera Jornada!
           </button>
         </div>
