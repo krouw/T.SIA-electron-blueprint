@@ -47,6 +47,7 @@ class ImpresionesNuevo extends Component {
           intent: Intent.SUCCESS,
           message: 'Impresion Registrada con Éxito!'
         })
+        this.props.aumentoContador();
         this.setState(this.props.InitialState);
       },
       err => {
@@ -198,6 +199,7 @@ ImpresionesNuevo.propTypes = {
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
   InitialState: React.PropTypes.object.isRequired,
+  aumentoContador: React.PropTypes.func.isRequired,
   isActive: React.PropTypes.bool.isRequired,
 }
 

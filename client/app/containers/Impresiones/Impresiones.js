@@ -9,7 +9,8 @@ import { addToast } from '../../actions/Toasts'
 import { addImpresion } from '../../actions/Impresiones'
 import { getContador,
         addContador,
-        updateContador }
+        updateContador,
+        aumentoContador }
         from '../../actions/Contador'
 import isEmpty from 'lodash/isEmpty'
 
@@ -47,6 +48,7 @@ class Impresiones extends Component {
             addToast={this.props.addToast}
             addImpresion={this.props.addImpresion}
             InitialState={InitialStateForm}
+            aumentoContador={this.props.aumentoContador}
             isActive={this.props.contador.isActive}
           />
         </Col>
@@ -61,6 +63,7 @@ Impresiones.propTypes = {
   getContador: React.PropTypes.func.isRequired,
   addContador: React.PropTypes.func.isRequired,
   updateContador: React.PropTypes.func.isRequired,
+  aumentoContador: React.PropTypes.func.isRequired,
   contador: React.PropTypes.object.isRequired,
 }
 
@@ -78,6 +81,7 @@ function mapDispatchToProps(dispatch){
     getContador: () => dispatch(getContador()),
     addContador: (contador) => dispatch(addContador(contador)),
     updateContador: (contador) => dispatch(updateContador(contador)),
+    aumentoContador: () => dispatch(aumentoContador()),
   }
 }
 

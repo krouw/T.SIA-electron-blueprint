@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SET_CONTADOR, ISEMPTY_CONTADOR  } from './types'
+import { SET_CONTADOR, ISEMPTY_CONTADOR, AUMT_CONTADOR } from './types'
 import isEmpty from 'lodash/isEmpty'
 
 export function getContador(){
@@ -33,6 +33,12 @@ export function updateContador(contador){
       console.log(res.data);
       dispatch(setContador(res.data));
     });
+  }
+}
+
+export function aumentoContador(){
+  return {
+    type: AUMT_CONTADOR,
   }
 }
 

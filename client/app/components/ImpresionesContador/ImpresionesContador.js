@@ -5,9 +5,6 @@ import { Row, Col } from 'react-flexbox-grid';
 class ImpresionesContador extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      contadorFinal: this.props.data.contadorFinal,
-    }
   }
 
   addFristContador(e){
@@ -29,7 +26,7 @@ class ImpresionesContador extends Component {
   updateContador(e){
     e.preventDefault();
     const contador = {
-      contadorFinal: 10,
+      contadorFinal: this.props.data.contadorFinal,
       id: this.props.data.id,
     }
     this.props.updateContador(contador);
@@ -59,7 +56,7 @@ class ImpresionesContador extends Component {
             <h2 className="is-active">
               {this.props.data.contadorInicial}
               <span>
-                /2525
+                /{this.props.data.contadorFinal}
               </span>
             </h2>
             <p className="is-active">cont. Actual</p>
