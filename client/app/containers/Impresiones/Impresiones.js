@@ -7,7 +7,10 @@ import { connect } from 'react-redux'
 import { addUser } from '../../actions/User'
 import { addToast } from '../../actions/Toasts'
 import { addImpresion } from '../../actions/Impresiones'
-import { getContador } from '../../actions/Contador'
+import { getContador,
+        addContador,
+        updateContador }
+        from '../../actions/Contador'
 import isEmpty from 'lodash/isEmpty'
 
 class Impresiones extends Component {
@@ -34,6 +37,8 @@ class Impresiones extends Component {
         <Col className="pt-card pt-elevation-1 Impresiones-Contador" xs={12} sm>
           <ImpresionesContador
             data={this.props.contador}
+            addContador={this.props.addContador}
+            updateContador={this.props.updateContador}
           />
         </Col>
         <Col className="pt-card pt-elevation-1 Impresiones-Nuevo" xs={12} sm={8}>
@@ -54,6 +59,8 @@ Impresiones.propTypes = {
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
   getContador: React.PropTypes.func.isRequired,
+  addContador: React.PropTypes.func.isRequired,
+  updateContador: React.PropTypes.func.isRequired,
   contador: React.PropTypes.object.isRequired,
 }
 
@@ -69,6 +76,8 @@ function mapDispatchToProps(dispatch){
     addToast: (toast) => dispatch(addToast(toast)),
     addImpresion: (impresionData, rutUser) => dispatch(addImpresion(impresionData, rutUser)),
     getContador: () => dispatch(getContador()),
+    addContador: (contador) => dispatch(addContador(contador)),
+    updateContador: (contador) => dispatch(updateContador(contador)),
   }
 }
 

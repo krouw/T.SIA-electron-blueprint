@@ -5,8 +5,36 @@ import { Row, Col } from 'react-flexbox-grid';
 class ImpresionesContador extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      contadorFinal: this.props.data.contadorFinal,
+    }
   }
-  
+
+  addFristContador(e){
+    e.preventDefault();;
+    const contador = {
+      contadorInicial: 0,
+    }
+    this.props.addContador(contador);
+  }
+
+  addContador(e){
+    e.preventDefault();
+    const contador = {
+      contadorInicial: parseInt(this.props.data.contadorFinal),
+    }
+    this.props.addContador(contador);
+  }
+
+  updateContador(e){
+    e.preventDefault();
+    const contador = {
+      contadorFinal: 10,
+      id: this.props.data.id,
+    }
+    this.props.updateContador(contador);
+  }
+
   render(){
     let content = ''
     if(!this.props.data.isContador){
@@ -16,8 +44,8 @@ class ImpresionesContador extends Component {
           <h2 style={{fontSize:32}}>No hay registros</h2>
           <button
             type="button"
-            className="pt-button pt-large pt-intent-success"
-            >
+            onClick={ (e) => this.addFristContador(e) }
+            className="pt-button pt-large pt-intent-success">
             Primera Jornada!
           </button>
         </div>
@@ -37,6 +65,7 @@ class ImpresionesContador extends Component {
             <p className="is-active">cont. Actual</p>
             <button
               type="button"
+              onClick={ (e) => this.updateContador(e) }
               className="pt-button pt-large pt-intent-danger">
               Cerrar Jornada
             </button>
@@ -51,6 +80,7 @@ class ImpresionesContador extends Component {
             <p>{this.props.data.fecha}</p>
             <button
               type="button"
+              onClick={ e => this.addContador(e) }
               className="pt-button pt-large pt-intent-success">
               Iniciar Jornada
             </button>
@@ -70,6 +100,8 @@ class ImpresionesContador extends Component {
 
 ImpresionesContador.propTypes = {
   data: React.PropTypes.object.isRequired,
+  addContador: React.PropTypes.func.isRequired,
+  updateContador: React.PropTypes.func.isRequired,
 }
 
 export default ImpresionesContador;

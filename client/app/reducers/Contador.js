@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
-import { SET_CONTADOR } from '../actions/types'
+import { SET_CONTADOR, ISEMPTY_CONTADOR } from '../actions/types'
 
 const initialState = {
   isActive: false,
@@ -7,34 +7,22 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_CONTADOR:
-      if(isEmpty(action.contador)){
-        return {
-          ...state,
-          isContador: false,
-        }
+    case ISEMPTY_CONTADOR:
+      return {
+        ...state,
+        isContador: false,
       }
-      else{
-        const fecha = action.contador.updatedAt.split('T');
-        if(isEmpty(action.contador.contadorFinal)){
-          return {
-            ...state,
-            isContador: true,
-            isActive: true,
-            contadorInicial: action.contador.contadorInicial,
-            fecha: fecha[0],
-          }
-        }
-        else{
-          return {
-            ...state,
-            isContador: true,
-            isActive: false,
-            contadorInicial: action.contador.contadorInicial,
-            contadorFinal: action.contador.contadorFinal,
-            fecha: fecha[0],
-          }
-        }
+    case SET_CONTADOR:
+      const fecha = action.contador.updatedAt.split('T');
+      const active = isEmpty(action.contador.contadorFinal);
+      return {
+        ...state,
+        isContador: true,
+        isActive: active,
+        contadorInicial: action.contador.contadorInicial,
+        contadorFinal: action.contador.contadorFinal,
+        fecha: fecha[0],
+        id: action.contador.id,
       }
     default:
         return state;
