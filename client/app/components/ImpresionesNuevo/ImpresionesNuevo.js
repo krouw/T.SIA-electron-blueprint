@@ -4,18 +4,9 @@ import { Row, Col } from 'react-flexbox-grid';
 import { MenuDivider, Intent } from '@blueprintjs/core';
 
 class ImpresionesNuevo extends Component {
-
-  constructor(){
-    super();
-    this.state = {
-      rut: '',
-      name: '',
-      rol: '',
-      carrera: '',
-      cantidad: '',
-      asignatura: '',
-      observacion: '',
-    }
+  constructor(props){
+    super(props);
+    this.state = this.props.InitialState;
   }
 
   submitUser(e){
@@ -38,6 +29,10 @@ class ImpresionesNuevo extends Component {
     );
   }
 
+  clean(e){
+    this.setState(this.props.InitialState);
+  }
+
   submitImpresion(e){
     e.preventDefault();
     const impresionData = {
@@ -52,6 +47,7 @@ class ImpresionesNuevo extends Component {
           intent: Intent.SUCCESS,
           message: 'Impresion Registrada con Éxito!'
         })
+        this.setState(this.props.InitialState);
       },
       err => {
         if(err.response.status === 404){
@@ -97,7 +93,7 @@ class ImpresionesNuevo extends Component {
                 name="name"
                 className="pt-input"
                 type="text"
-                value={this.state.nombre}
+                value={this.state.name}
                 dir="auto" />
             </label>
           </Col>
@@ -179,6 +175,13 @@ class ImpresionesNuevo extends Component {
           <Col xs={12} >
             <button
               type="button"
+              style={{marginRight:8}}
+              className="pt-button pt-intent-primary"
+              onClick={ e => this.clean(e) }>
+              Limpiar Formulario
+            </button>
+            <button
+              type="button"
               className="pt-button pt-intent-success"
               onClick={ e => this.submitImpresion(e) }>
               Ingresar Impresión
@@ -193,6 +196,7 @@ ImpresionesNuevo.propTypes = {
   addUser: React.PropTypes.func.isRequired,
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
+  InitialState: React.PropTypes.object.isRequired,
 }
 
 export default ImpresionesNuevo;

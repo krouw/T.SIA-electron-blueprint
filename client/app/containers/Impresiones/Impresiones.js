@@ -10,6 +10,15 @@ import { addImpresion } from '../../actions/Impresiones'
 
 class Impresiones extends Component {
   render(){
+    const InitialState = {
+      rut: '',
+      name: '',
+      rol: '',
+      carrera: '',
+      cantidad: '',
+      asignatura: '',
+      observacion: '',
+    };
     return (
       <Row className="Impresiones" between="xs" style={{margin:0}}>
         <Col className="pt-card pt-elevation-1 Impresiones-Contador" xs={12} sm>
@@ -20,6 +29,7 @@ class Impresiones extends Component {
             addUser={this.props.addUser}
             addToast={this.props.addToast}
             addImpresion={this.props.addImpresion}
+            InitialState={InitialState}
           />
         </Col>
       </Row>
