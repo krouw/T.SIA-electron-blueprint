@@ -6,11 +6,20 @@ import ImpresionesNuevo from '../../components/ImpresionesNuevo/ImpresionesNuevo
 import { connect } from 'react-redux'
 import { addUser } from '../../actions/User'
 import { addToast } from '../../actions/Toasts'
-import { addImpresion } from '../../actions/Impresiones'
+import { addImpresion, getContador } from '../../actions/Impresiones'
+import isEmpty from 'lodash/isEmpty'
 
 class Impresiones extends Component {
+  constructor(){
+    super();
+  }
+
+  componentDidMount(){
+    this.props.getContador();
+  }
+
   render(){
-    const InitialState = {
+    const InitialStateForm = {
       rut: '',
       name: '',
       rol: '',
@@ -22,14 +31,15 @@ class Impresiones extends Component {
     return (
       <Row className="Impresiones" between="xs" style={{margin:0}}>
         <Col className="pt-card pt-elevation-1 Impresiones-Contador" xs={12} sm>
-          <ImpresionesContador />
+          hello
         </Col>
         <Col className="pt-card pt-elevation-1 Impresiones-Nuevo" xs={12} sm={8}>
           <ImpresionesNuevo
             addUser={this.props.addUser}
             addToast={this.props.addToast}
             addImpresion={this.props.addImpresion}
-            InitialState={InitialState}
+            InitialState={InitialStateForm}
+            isActive={this.props.contador.isActive}
           />
         </Col>
       </Row>
@@ -40,6 +50,14 @@ Impresiones.propTypes = {
   addUser: React.PropTypes.func.isRequired,
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
+  getContador: React.PropTypes.func.isRequired,
+  contador: React.PropTypes.object.isRequired,
 }
 
-export default connect(null, { addUser, addToast , addImpresion })(Impresiones);
+function mapStateToProps(state){
+  return {
+    contador: state.Contador
+  }
+}
+
+export default connect(mapStateToProps, { addUser, addToast , addImpresion, getContador })(Impresiones);

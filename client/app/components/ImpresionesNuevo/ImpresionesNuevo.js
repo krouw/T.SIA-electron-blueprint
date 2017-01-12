@@ -182,7 +182,8 @@ class ImpresionesNuevo extends Component {
             </button>
             <button
               type="button"
-              className="pt-button pt-intent-success"
+              disabled={(this.props.isActive ? false : true)}
+              className={"pt-button "+ (this.props.isActive ? 'pt-intent-success' : 'pt-disabled')}
               onClick={ e => this.submitImpresion(e) }>
               Ingresar Impresión
             </button>
@@ -197,6 +198,7 @@ ImpresionesNuevo.propTypes = {
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
   InitialState: React.PropTypes.object.isRequired,
+  isActive: React.PropTypes.bool.isRequired,
 }
 
 export default ImpresionesNuevo;

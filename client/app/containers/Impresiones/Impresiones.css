@@ -21,6 +21,22 @@
   margin-top: 1rem;
 }
 
+.Impresiones-Contador h2.is-active{
+  font-size: 2.2em;
+  line-height: 42px;
+  font-weight: 300;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.Impresiones-Contador h2.is-active span{
+  font-size: 4rem;
+  line-height: 75px;
+  font-weight: 300;
+  margin-top: 1rem;
+  color: green;
+}
+
 .Impresiones-Contador p{
   font-size: 1em;
   line-height: 24px;
@@ -28,9 +44,18 @@
   letter-spacing: 2px;
 }
 
+.Impresiones-Contador p.is-active{
+  font-size: .9em;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-align: end;
+  padding-right: 1.5rem;
+}
+
 .Impresiones-Contador button{
   width: 100%;
   max-width: 14em;
+  margin-top: 1em;
 }
 
 .Impresiones-Title{
