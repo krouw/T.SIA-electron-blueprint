@@ -14,7 +14,6 @@ module.exports = {
     },
     contadorFinal:{
       type: 'int',
-      required: true
     }
   }
 };
