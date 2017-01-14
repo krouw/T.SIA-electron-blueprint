@@ -64,7 +64,8 @@ export default class SigninForm extends Component {
             name="email" value={this.state.name}
             type="text"
             className="pt-input"
-            placeholder="Email" />
+            placeholder="Email"
+            required="true"/>
         </div>
         <div className="pt-input-group pt-large">
           <span className="pt-icon pt-icon-lock"></span>
@@ -73,7 +74,8 @@ export default class SigninForm extends Component {
             name="password"
             value={this.state.password} type="password"
             className="pt-input"
-            placeholder="Contraseña" />
+            placeholder="Contraseña"
+            required="true"/>
         </div>
         <button className="pt-button pt-large pt-intent-primary Login-Button">Login</button>
       </form>
