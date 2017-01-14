@@ -63,6 +63,7 @@ class ImpresionesNuevo extends Component {
         }
       }
     );
+    this.setState({disabled: false})
   }
 
   onChange(e){
@@ -82,7 +83,6 @@ class ImpresionesNuevo extends Component {
       .then(
         (res) => {
         console.log(res);
-
         this.setState({name: res.data.name});
         this.setState({rol: res.data.rol});
         this.setState({carrera: res.data.carrera});

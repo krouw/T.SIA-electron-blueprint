@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import InfoOutline from 'material-ui/svg-icons/action/info-outline';
 import axios from 'axios';
+import Moment from 'react-moment';
 
 import DataTables from 'material-ui-datatables';
 import { Row, Col } from 'react-flexbox-grid';
@@ -19,7 +20,7 @@ import {
   PopoverInteractionKind,
   Position} from '@blueprintjs/core';
 import { DateRangePicker } from "@blueprintjs/datetime";
-
+var moment = require('moment');
 
 const styles = {
   container: {
@@ -109,7 +110,6 @@ const TABLE_COLUMNS_SORT_STYLE = [
   }, {
     key: 'nombre',
     label: 'Nombre',
-    sortable: true,
     style: {
       width: 155,
     }
@@ -124,20 +124,30 @@ const TABLE_COLUMNS_SORT_STYLE = [
     label: 'Asignatura',
     style: {
       width: 110,
+      textAlign: 'center',
     }
   },
   {
     key: 'observacion',
     label: 'Obervacion',
     style: {
-      width: 180,
+      width: 130,
     }
   }, {
     key: 'hojas',
     label: 'Hojas',
     style: {
-      width: 70,
+      width: 80,
+      textAlign: 'center',
     }
+  }
+];
+
+
+
+const TABLE_DATA_NEXT = [
+  {
+
   }
 ];
 
@@ -169,19 +179,23 @@ const TABLE_DATA = [
     observacion: 'tarea arboles binarios',
     hojas: '10',
   },
-];
-
-const TABLE_DATA_NEXT = [
   {
-
+    fecha: '20/01/2017',
+    rut: '18082418-9',
+    nombre: 'Carlos Riquelme Labrin ',
+    rol: 'estudiante',
+    asignatura: 'programacion',
+    observacion: 'tarea arboles binarios',
+    hojas: '10',
   }
 ];
 
 class Historial extends Component {
   constructor(props, context) {
     super(props, context);
+/*
     this.handleSortOrderChange = this.handleSortOrderChange.bind(this);
-    this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
+    //this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
     this.handleCellClick = this.handleCellClick.bind(this);
     this.handleCellDoubleClick = this.handleCellDoubleClick.bind(this);
     this.handleRowSelection = this.handleRowSelection.bind(this);
@@ -189,16 +203,42 @@ class Historial extends Component {
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
     this.handlePersonAddClick = this.handlePersonAddClick.bind(this);
     this.handleInfoClick = this.handleInfoClick.bind(this);
-    axios.get('http://localhost:1337/impresion',(res)=>{
-      console.log(res);
-    });
+*/
     this.state = {
-      data: TABLE_DATA,
+      impresions: [],
       page: 1,
-      search: "",
+      search: '',
     };
+
   }
 
+  loadHistorial(){
+    const allImpresiones = [];
+    axios.get('http://localhost:1337/impresion?sort=updatedAt DESC')
+      .then((response) => {
+        var users = response.data;
+        var impresiones = users.map(function(impresion){
+          var aux ={
+            fecha: moment(impresion.createdAt).format('DD/MM/YYYY'),
+            rut: impresion.user.rut,
+            nombre: impresion.user.name,
+            rol: impresion.user.rol,
+            asignatura: impresion.asignatura,
+            observacion: impresion.observacion,
+            hojas: impresion.cantidad,
+          }
+        allImpresiones.push(aux);
+        });
+
+    });
+
+    this.setState({impresions: allImpresiones})
+    console.log(allImpresiones);
+  }
+  componentWillMount(){
+      this.loadHistorial();
+  }
+/*
   handleSortOrderChange(key, order) {
     console.log('key:' + key + ' order: ' + order);
   }
@@ -206,8 +246,11 @@ class Historial extends Component {
   handleFilterValueChange(e) {
     console.log('filter value: ' + value);
     this.setState({[e.target.search]: e.target.value});
+  }*/
+  onChange(e){
+    this.setState({[e.target.name]: e.target.value});
   }
-
+/*
   handleCellClick(rowIndex, columnIndex, row, column) {
     console.log('rowIndex: ' + rowIndex + ' columnIndex: ' + columnIndex);
   }
@@ -223,7 +266,7 @@ class Historial extends Component {
   handlePreviousPageClick() {
     console.log('handlePreviousPageClick');
     this.setState({
-      data: TABLE_DATA,
+      data: todasImpresiones,
       page: 1,
     });
   }
@@ -243,21 +286,31 @@ class Historial extends Component {
   handleInfoClick() {
     console.log('handleInfoClick');
   }
-
+*/
   render() {
+
     let prueba = new Date();
     let popoverContent = (
             <div>
               <DateRangePicker/>
             </div>
         );
+
     return (
       <section className="Historial">
         <Row start="xs" bottom="sm" className="Historial-Filter">
           <Col xs={12} sm={4}>
             <label className="pt-label">
               Buscar
-              <input className="pt-input" type="text" dir="auto" onFilterValueChange={ (e) => this.onFilterValueChange(e) } value={this.state.search}/>
+              <input
+               name="search"
+               className="pt-input"
+               type="text"
+               dir="auto"
+               onChange={ (e) => this.onChange(e) }
+               value={this.state.search}
+               placeholder="Realice una busqueda"/>
+
             </label>
           </Col>
           <Col xs={12} sm={8}>
@@ -268,11 +321,11 @@ class Historial extends Component {
                      useSmartPositioning={false}>
               <div className="Historial-Fecha">
                 <span className="pt-tag pt-large pt-minimal">
-                  sin fecha
+                  Fecha Incio
                 </span>
                 <span className="pt-icon-large pt-icon-arrow-right"></span>
                 <span className="pt-tag pt-large pt-minimal">
-                  sin fecha
+                  Fecha Termino
                 </span>
               </div>
             </Popover>
@@ -287,13 +340,13 @@ class Historial extends Component {
                 selectable={false}
                 showRowHover={true}
                 columns={TABLE_COLUMNS_SORT_STYLE}
-                data={TABLE_DATA}
+                data={this.state.impresions}
                 showCheckboxes={false}
                 showHeaderToolbar={false}
-                onCellClick={this.handleCellClick}
-                onCellDoubleClick={this.handleCellDoubleClick}
-                onFilterValueChange={this.handleFilterValueChange}
-                onSortOrderChange={this.handleSortOrderChange}
+                //onCellClick={this.handleCellClick}
+                //onCellDoubleClick={this.handleCellDoubleClick}
+                //onFilterValueChange={this.handleFilterValueChange}
+                //onSortOrderChange={this.handleSortOrderChange}
                 count={3}
               />
             </Card>
