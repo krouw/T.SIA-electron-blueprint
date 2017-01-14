@@ -28,7 +28,15 @@ class ImpresionesNuevo extends Component {
           message: 'Usuario Agregado'
         })
       },
-      err => console.log(err.response)
+      err => {
+        if(err.response.status === 400){
+          this.props.addToast({
+            iconName: "warning-sign",
+            intent: Intent.DANGER,
+            message: 'Este usuario ya se encuentra registrado'
+          })
+        }
+      }
     );
   }
 
