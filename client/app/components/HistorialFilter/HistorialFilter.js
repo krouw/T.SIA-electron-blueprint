@@ -36,8 +36,7 @@ export default class HistorialFilter extends Component {
              dir="auto"
              onChange={ (e) => this.onChange(e) }
              value={this.state.search}
-             placeholder="Realice una busqueda"/>
-
+            />
           </label>
         </Col>
         <Col xs={12} sm={8}>

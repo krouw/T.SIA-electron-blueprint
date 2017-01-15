@@ -10,14 +10,14 @@ import {Card, CardHeader} from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import InfoOutline from 'material-ui/svg-icons/action/info-outline';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 import DataTables from 'material-ui-datatables';
-import { Row, Col } from 'react-flexbox-grid';
-var moment = require('moment');
 import HistorialFilter from '../../components/HistorialFilter/HistorialFilter'
 
+injectTapEventPlugin();
 
 const styles = {
   container: {
@@ -204,7 +204,6 @@ class Historial extends Component {
     this.state = {
       impresions: [],
       page: 1,
-      search: '',
     };
 
   }
@@ -244,9 +243,6 @@ class Historial extends Component {
     console.log('filter value: ' + value);
     this.setState({[e.target.search]: e.target.value});
   }*/
-  onChange(e){
-    this.setState({[e.target.name]: e.target.value});
-  }
 /*
   handleCellClick(rowIndex, columnIndex, row, column) {
     console.log('rowIndex: ' + rowIndex + ' columnIndex: ' + columnIndex);
