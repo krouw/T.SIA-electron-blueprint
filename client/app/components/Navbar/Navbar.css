@@ -6,3 +6,7 @@
   font-size: 1.3rem !important;
   margin-right: 2.5rem;
 }
+
+.pt-tab:focus{
+  outline: none;
+}
