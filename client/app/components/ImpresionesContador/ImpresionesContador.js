@@ -20,7 +20,7 @@ class ImpresionesContador extends Component {
   addContador(e){
     e.preventDefault();
     const contador = {
-      contadorInicial: parseInt(this.props.data.contadorFinal),
+      contadorInicial: parseInt(this.props.contador.contadorFinal),
       contadorFinal: parseInt(this.props.contador.contadorFinal),
       isActive: true,
     }
@@ -30,8 +30,8 @@ class ImpresionesContador extends Component {
   expiredContador(e){
     e.preventDefault();
     const contador = {
-      contadorFinal: this.props.data.contadorFinal,
-      id: this.props.data.id,
+      contadorFinal: this.props.contador.contadorFinal,
+      id: this.props.contador.id,
       isActive: false,
     }
     this.props.updateContador(contador);
@@ -59,9 +59,9 @@ class ImpresionesContador extends Component {
           <div>
             <h4>JORNADA INICIADA</h4>
             <h2 className="is-active">
-              {this.props.contadorcontador.contadorInicial}
+              {this.props.contador.contadorInicial}
               <span>
-                /{this.props.contadorcontador.contadorFinal}
+                /{this.props.contador.contadorFinal}
               </span>
             </h2>
             <p className="is-active">cont. Actual</p>

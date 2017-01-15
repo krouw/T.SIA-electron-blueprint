@@ -262,7 +262,7 @@ ImpresionesNuevo.propTypes = {
   addImpresion: React.PropTypes.func.isRequired,
   InitialState: React.PropTypes.object.isRequired,
   updateContador: React.PropTypes.func.isRequired,
-  contador: React.PropTypes.bool.isRequired,
+  contador: React.PropTypes.object.isRequired,
 }
 
 export default ImpresionesNuevo;

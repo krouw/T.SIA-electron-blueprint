@@ -62,7 +62,6 @@ Impresiones.propTypes = {
   getContador: React.PropTypes.func.isRequired,
   addContador: React.PropTypes.func.isRequired,
   updateContador: React.PropTypes.func.isRequired,
-  aumentoContador: React.PropTypes.func.isRequired,
   contador: React.PropTypes.object.isRequired,
 }
 
