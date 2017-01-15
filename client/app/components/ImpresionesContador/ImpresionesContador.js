@@ -11,6 +11,8 @@ class ImpresionesContador extends Component {
     e.preventDefault();;
     const contador = {
       contadorInicial: 0,
+      contadorFinal: 0,
+      isActive: true,
     }
     this.props.addContador(contador);
   }
@@ -19,22 +21,25 @@ class ImpresionesContador extends Component {
     e.preventDefault();
     const contador = {
       contadorInicial: parseInt(this.props.data.contadorFinal),
+      contadorFinal: parseInt(this.props.contador.contadorFinal),
+      isActive: true,
     }
     this.props.addContador(contador);
   }
 
-  updateContador(e){
+  expiredContador(e){
     e.preventDefault();
     const contador = {
       contadorFinal: this.props.data.contadorFinal,
       id: this.props.data.id,
+      isActive: false,
     }
     this.props.updateContador(contador);
   }
 
   render(){
     let content = ''
-    if(!this.props.data.isContador){
+    if(!this.props.contador.isContador){
       content = (
         <div>
           <h4>BIENVENIDO!</h4>
@@ -49,20 +54,20 @@ class ImpresionesContador extends Component {
       )
     }
     else{
-      if(this.props.data.isActive){
+      if(this.props.contador.isActive){
         content = (
           <div>
             <h4>JORNADA INICIADA</h4>
             <h2 className="is-active">
-              {this.props.data.contadorInicial}
+              {this.props.contadorcontador.contadorInicial}
               <span>
-                /{this.props.data.contadorFinal}
+                /{this.props.contadorcontador.contadorFinal}
               </span>
             </h2>
             <p className="is-active">cont. Actual</p>
             <button
               type="button"
-              onClick={ (e) => this.updateContador(e) }
+              onClick={ (e) => this.expiredContador(e) }
               className="pt-button pt-large pt-intent-danger">
               Cerrar Jornada
             </button>
@@ -73,8 +78,8 @@ class ImpresionesContador extends Component {
         content = (
           <div>
             <h4>ÚLTIMA JORNADA</h4>
-            <h2>{this.props.data.contadorFinal}</h2>
-            <p>{this.props.data.fecha}</p>
+            <h2>{this.props.contador.contadorFinal}</h2>
+            <p>{this.props.contador.fecha}</p>
             <button
               type="button"
               onClick={ e => this.addContador(e) }
@@ -96,7 +101,7 @@ class ImpresionesContador extends Component {
 }
 
 ImpresionesContador.propTypes = {
-  data: React.PropTypes.object.isRequired,
+  contador: React.PropTypes.object.isRequired,
   addContador: React.PropTypes.func.isRequired,
   updateContador: React.PropTypes.func.isRequired,
 }

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { MenuDivider, Intent } from '@blueprintjs/core';
-
 import axios from 'axios'
 
 class ImpresionesNuevo extends Component {
@@ -49,17 +48,27 @@ class ImpresionesNuevo extends Component {
     const impresionData = {
       cantidad: this.state.cantidad,
       asignatura: this.state.asignatura,
-      observacion: this.state.observacion
+      observacion: this.state.observacion,
     };
     this.props.addImpresion(impresionData, this.state.rut).then(
       res => {
-        this.props.addToast({
-          iconName: "pt-icon-tick",
-          intent: Intent.SUCCESS,
-          message: 'Impresion Registrada con Éxito!'
-        })
-        this.props.aumentoContador();
-        this.setState(this.props.InitialState);
+        axios.get('http://localhost:1337/contador?sort=updatedAt DESC&limit=1')
+        .then( res => {
+          const aumento = parseInt(res.data[0].contadorFinal) + parseInt(this.state.cantidad);
+          const contador = {
+            contadorFinal: aumento,
+            id: res.data[0].id,
+          }
+          this.props.updateContador(contador)
+          .then(() => {
+            this.setState(this.props.InitialState);
+            this.props.addToast({
+              iconName: "pt-icon-tick",
+              intent: Intent.SUCCESS,
+              message: 'Impresion Registrada con Éxito!'
+            })
+          });
+        });
       },
       err => {
         if(err.response.status === 404){
@@ -236,8 +245,8 @@ class ImpresionesNuevo extends Component {
             </button>
             <button
               type="button"
-              disabled={(this.props.isActive ? false : true)}
-              className={"pt-button "+ (this.props.isActive ? 'pt-intent-success' : 'pt-disabled')}
+              disabled={(this.props.contador.isActive ? false : true)}
+              className={"pt-button "+ (this.props.contador.isActive ? 'pt-intent-success' : 'pt-disabled')}
               onClick={ e => this.submitImpresion(e) }>
               Ingresar Impresión
             </button>
@@ -252,8 +261,8 @@ ImpresionesNuevo.propTypes = {
   addToast: React.PropTypes.func.isRequired,
   addImpresion: React.PropTypes.func.isRequired,
   InitialState: React.PropTypes.object.isRequired,
-  aumentoContador: React.PropTypes.func.isRequired,
-  isActive: React.PropTypes.bool.isRequired,
+  updateContador: React.PropTypes.func.isRequired,
+  contador: React.PropTypes.bool.isRequired,
 }
 
 export default ImpresionesNuevo;

@@ -9,8 +9,7 @@ import { addToast } from '../../actions/Toasts'
 import { addImpresion } from '../../actions/Impresiones'
 import { getContador,
         addContador,
-        updateContador,
-        aumentoContador }
+        updateContador, }
         from '../../actions/Contador'
 import isEmpty from 'lodash/isEmpty'
 
@@ -37,7 +36,7 @@ class Impresiones extends Component {
       <Row className="Impresiones" between="xs" style={{margin:0}}>
         <Col className="pt-card pt-elevation-1 Impresiones-Contador" xs={12} sm>
           <ImpresionesContador
-            data={this.props.contador}
+            contador={this.props.contador}
             addContador={this.props.addContador}
             updateContador={this.props.updateContador}
           />
@@ -48,8 +47,8 @@ class Impresiones extends Component {
             addToast={this.props.addToast}
             addImpresion={this.props.addImpresion}
             InitialState={InitialStateForm}
-            aumentoContador={this.props.aumentoContador}
-            isActive={this.props.contador.isActive}
+            updateContador={this.props.updateContador}
+            contador={this.props.contador}
           />
         </Col>
       </Row>
@@ -81,7 +80,6 @@ function mapDispatchToProps(dispatch){
     getContador: () => dispatch(getContador()),
     addContador: (contador) => dispatch(addContador(contador)),
     updateContador: (contador) => dispatch(updateContador(contador)),
-    aumentoContador: () => dispatch(aumentoContador()),
   }
 }
 

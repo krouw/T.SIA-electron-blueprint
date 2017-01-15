@@ -14,6 +14,9 @@ module.exports = {
     },
     contadorFinal:{
       type: 'int',
+    },
+    isActive:{
+      type: 'boolean',
     }
   }
 };
