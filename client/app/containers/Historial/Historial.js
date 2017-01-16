@@ -3,6 +3,7 @@ import SearchInput, {createFilter} from 'react-search-input'
 import HistorialFilter from '../../components/HistorialFilter/HistorialFilter'
 import axios from 'axios'
 import moment from 'moment'
+import HistorialDatatable from '../../components/HistorialDatatable/HistorialDatatable'
 
 const KEYS_TO_FILTERS = ['fecha', 'rut', 'nombre','rol','asignatura']
 
@@ -60,15 +61,7 @@ class Historial extends Component{
           handleDateChange={dateRange => this.handleDateChange(dateRange)}
           dateRange={this.state.dateRange}
         />
-        {filteredImpre.map( impre => {
-          return (
-            <ul className="mail" key={impre.id}>
-              <li>{impre.nombre}</li>
-              <li>{impre.rut}</li>
-              <li>{impre.fecha}</li>
-            </ul>
-          )
-        })}
+        <HistorialDatatable />
       </div>
     )
   }
