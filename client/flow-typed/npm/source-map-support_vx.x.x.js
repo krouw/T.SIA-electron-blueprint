@@ -1,4 +1,4 @@
-// flow-typed signature: e2692ce34532863f2f763f3209f13a87
+// flow-typed signature: 56b1552fd2b5afd316cb42a8e750cc11
 // flow-typed version: <<STUB>>/source-map-support_v^0.4.6/flow_v0.37.0
 
 /**
@@ -42,6 +42,18 @@ declare module 'source-map-support/test' {
   declare module.exports: any;
 }
 
+declare module 'source-map-support/webpack-test/compiled' {
+  declare module.exports: any;
+}
+
+declare module 'source-map-support/webpack-test/script' {
+  declare module.exports: any;
+}
+
+declare module 'source-map-support/webpack-test/webpack.config' {
+  declare module.exports: any;
+}
+
 // Filename aliases
 declare module 'source-map-support/browser-source-map-support.js' {
   declare module.exports: $Exports<'source-map-support/browser-source-map-support'>;
@@ -57,4 +69,13 @@ declare module 'source-map-support/source-map-support.js' {
 }
 declare module 'source-map-support/test.js' {
   declare module.exports: $Exports<'source-map-support/test'>;
+}
+declare module 'source-map-support/webpack-test/compiled.js' {
+  declare module.exports: $Exports<'source-map-support/webpack-test/compiled'>;
+}
+declare module 'source-map-support/webpack-test/script.js' {
+  declare module.exports: $Exports<'source-map-support/webpack-test/script'>;
+}
+declare module 'source-map-support/webpack-test/webpack.config.js' {
+  declare module.exports: $Exports<'source-map-support/webpack-test/webpack.config'>;
 }

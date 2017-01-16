@@ -13,6 +13,7 @@ class Historial extends Component{
       searchTerm: '',
       impresiones: [],
       dateRange: [],
+      impresionesFilter: []
     }
   }
 
@@ -46,6 +47,10 @@ class Historial extends Component{
     this.setState({dateRange: dateRange});
   }
 
+  dateGenerate(dateRange){
+
+  }
+
   render(){
       const filteredImpre = this.state.impresiones.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
@@ -60,6 +65,7 @@ class Historial extends Component{
             <ul className="mail" key={impre.id}>
               <li>{impre.nombre}</li>
               <li>{impre.rut}</li>
+              <li>{impre.fecha}</li>
             </ul>
           )
         })}

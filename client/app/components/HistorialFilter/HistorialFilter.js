@@ -41,7 +41,7 @@ export default class HistorialFilter extends Component {
       if(date){
           return (<Tag className={Classes.LARGE}
           intent={Intent.PRIMARY}>
-          {moment(date).format("D MMMM YYYY")}
+          {moment(date).format("DD/MM/YYYY")}
         </Tag>)
       }
       else{

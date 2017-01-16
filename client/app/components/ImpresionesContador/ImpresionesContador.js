@@ -5,16 +5,24 @@ import { Row, Col } from 'react-flexbox-grid';
 class ImpresionesContador extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      first: 0,
+    }
+  }
+
+  onChange(e){
+    this.setState({[e.target.name]: e.target.value});
   }
 
   addFristContador(e){
     e.preventDefault();;
     const contador = {
-      contadorInicial: 0,
-      contadorFinal: 0,
+      contadorInicial: this.state.first,
+      contadorFinal: this.state.first,
       isActive: true,
     }
     this.props.addContador(contador);
+
   }
 
   addContador(e){
@@ -42,8 +50,20 @@ class ImpresionesContador extends Component {
     if(!this.props.contador.isContador){
       content = (
         <div>
-          <h4>BIENVENIDO!</h4>
-          <h2 style={{fontSize:32}}>No hay registros</h2>
+          <h4 style={{fontSize:25}}>BIENVENIDO A SIU</h4>
+          <h2 style={{fontSize:15}}>No existen registros, ingrese el primero</h2>
+          <input
+            style={{textAlign:"center"}}
+            onChange={ (e) => this.onChange(e) }
+            name="first"
+            className="pt-input"
+            type="number"
+            dir="auto"
+            min="0"
+            placeholder="Primer Contador"
+            required="true"
+
+            />
           <button
             type="button"
             onClick={ (e) => this.addFristContador(e) }
@@ -92,7 +112,7 @@ class ImpresionesContador extends Component {
     }
 
     return (
-      <Row center="xs">
+      <Row style={{marginTop: "10px"}} center="xs">
         <Col xs={12}>
           { content }
         </Col>

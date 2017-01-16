@@ -1,4 +1,4 @@
-// flow-typed signature: 8f280d581b3762f6e40697c6655c6f15
+// flow-typed signature: 2fba3903fcfa7867f30e85dd7cf0a407
 // flow-typed version: <<STUB>>/@blueprintjs/datetime_v^1.4.0/flow_v0.37.0
 
 /**
@@ -31,6 +31,10 @@ declare module '@blueprintjs/datetime/dist/common/dateUtils' {
 }
 
 declare module '@blueprintjs/datetime/dist/common/errors' {
+  declare module.exports: any;
+}
+
+declare module '@blueprintjs/datetime/dist/common/months' {
   declare module.exports: any;
 }
 
@@ -79,6 +83,9 @@ declare module '@blueprintjs/datetime/dist/common/dateUtils.js' {
 }
 declare module '@blueprintjs/datetime/dist/common/errors.js' {
   declare module.exports: $Exports<'@blueprintjs/datetime/dist/common/errors'>;
+}
+declare module '@blueprintjs/datetime/dist/common/months.js' {
+  declare module.exports: $Exports<'@blueprintjs/datetime/dist/common/months'>;
 }
 declare module '@blueprintjs/datetime/dist/common/utils.js' {
   declare module.exports: $Exports<'@blueprintjs/datetime/dist/common/utils'>;
