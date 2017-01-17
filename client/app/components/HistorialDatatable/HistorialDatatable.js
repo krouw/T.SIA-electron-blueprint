@@ -1,26 +1,10 @@
 import React, { Component } from 'react';
 import ReactDataGrid from 'react-data-grid'
+import axios from 'axios'
+import moment from 'moment'
 
-function randomDate(start, end) {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
-}
 
-//helper to create a fixed number of rows
-function createRows(numberOfRows){
-  const _rows = [];
-  for (var i = 1; i < numberOfRows; i++) {
-    _rows.push({
-      id: i,
-      task: 'Task ' + i,
-      complete: Math.min(100, Math.round(Math.random() * 110)),
-      priority : ['Critical', 'High', 'Medium', 'Low'][Math.floor((Math.random() * 3) + 1)],
-      issueType : ['Bug', 'Improvement', 'Epic', 'Story'][Math.floor((Math.random() * 3) + 1)],
-      startDate: randomDate(new Date(2015, 3, 1), new Date()),
-      completeDate: randomDate(new Date(), new Date(2016, 0, 1))
-    });
-  }
-  return _rows;
-}
+
 
 //function to retrieve a row for a given index
 const rowGetter = function(i){
@@ -29,38 +13,40 @@ const rowGetter = function(i){
 
 const columns = [
 {
-  key: 'id',
-  name: 'ID',
-  width: 80
+  key: 'fecha',
+  name: 'Fecha',
+  sortable: true
 },
 {
-  key: 'task',
-  name: 'Title',
+  key: 'nombre',
+  name: 'Nombre',
   sortable : true
 },
 {
-  key: 'priority',
-  name: 'Priority',
+  key: 'rut',
+  name: 'Rut',
   sortable : true
 },
 {
-  key: 'issueType',
-  name: 'Issue Type',
+  key: 'rol',
+  name: 'Rol',
   sortable : true
 },
 {
-  key: 'complete',
-  name: '% Complete',
+  key: 'asignatura',
+  name: 'Asignatura',
   sortable : true
 },
 {
-  key: 'startDate',
-  name: 'Start Date',
+  key: 'observacion',
+  name: 'Observacion',
+  width: 220,
   sortable : true
 },
 {
-  key: 'completeDate',
-  name: 'Expected Complete',
+  key: 'hojas',
+  name: 'Hojas',
+  width: 80,
   sortable : true
 }
 ]
@@ -68,12 +54,34 @@ const columns = [
 export default class HistorialDatatable extends Component {
   constructor(props){
     super(props);
-    const originalRows = createRows(1000);
-    const rows = originalRows.slice(0);
+
     this.state = {
-      originalRows: originalRows,
-      rows: rows,
+      impresiones: [],
+      rows: [],
     }
+  }
+
+  componentDidMount(){
+    const allImpresiones = [];
+    axios.get('http://localhost:1337/impresion?sort=updatedAt DESC')
+      .then((response) => {
+        var users = response.data;
+        var impresiones = users.map(function(impresion){
+          var aux ={
+            fecha: moment(impresion.createdAt).format('DD/MM/YYYY'),
+            rut: impresion.user.rut,
+            nombre: impresion.user.name,
+            rol: impresion.user.rol,
+            asignatura: impresion.asignatura,
+            observacion: impresion.observacion,
+            hojas: impresion.cantidad,
+            id: impresion.id,
+          }
+        allImpresiones.push(aux);
+        });
+        this.setState({impresiones: allImpresiones})
+        this.setState({rows: allImpresiones.slice(0)})
+    });
   }
 
   rowGetter(rowIdx){

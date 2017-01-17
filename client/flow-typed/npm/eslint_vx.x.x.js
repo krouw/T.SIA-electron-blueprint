@@ -1,4 +1,4 @@
-// flow-typed signature: 9b5c4e770dee23ca70029088b56b3abd
+// flow-typed signature: 9325c676d7a69cdb43e3a8669aeb3f47
 // flow-typed version: <<STUB>>/eslint_v^3.11.1/flow_v0.37.0
 
 /**
@@ -1018,6 +1018,10 @@ declare module 'eslint/lib/rules/prefer-const' {
   declare module.exports: any;
 }
 
+declare module 'eslint/lib/rules/prefer-destructuring' {
+  declare module.exports: any;
+}
+
 declare module 'eslint/lib/rules/prefer-numeric-literals' {
   declare module.exports: any;
 }
@@ -1985,6 +1989,9 @@ declare module 'eslint/lib/rules/prefer-arrow-callback.js' {
 }
 declare module 'eslint/lib/rules/prefer-const.js' {
   declare module.exports: $Exports<'eslint/lib/rules/prefer-const'>;
+}
+declare module 'eslint/lib/rules/prefer-destructuring.js' {
+  declare module.exports: $Exports<'eslint/lib/rules/prefer-destructuring'>;
 }
 declare module 'eslint/lib/rules/prefer-numeric-literals.js' {
   declare module.exports: $Exports<'eslint/lib/rules/prefer-numeric-literals'>;
