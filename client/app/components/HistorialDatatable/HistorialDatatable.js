@@ -73,6 +73,7 @@ export default class HistorialDatatable extends Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({rows: nextProps.impresiones});
+    console.log(this.state.rows);
   }
 
   handleGridSort(sortColumn,sortDirection){

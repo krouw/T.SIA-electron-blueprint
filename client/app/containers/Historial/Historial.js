@@ -5,7 +5,7 @@ import axios from 'axios'
 import moment from 'moment'
 import HistorialDatatable from '../../components/HistorialDatatable/HistorialDatatable'
 
-const KEYS_TO_FILTERS = ['fecha', 'rut', 'nombre','rol','asignatura']
+const KEYS_TO_FILTERS = ['fecha', 'user.rut', 'user.name','user.rol','asignatura']
 
 class Historial extends Component{
   constructor(props){
@@ -32,6 +32,7 @@ class Historial extends Component{
 
   searchUpdated (term) {
     this.setState({searchTerm: term});
+    console.log(term);
   }
 
   handleDateRange(dateRange){
@@ -46,7 +47,8 @@ class Historial extends Component{
   }
 
   render(){
-    const filteredImpre = this.state.impresionesFilter.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    console.log(this.state.impresionesFilter);
+    const filteredImpre = this.state.impresionesFilter.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     return (
       <div>
         <HistorialFilter
