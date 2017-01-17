@@ -23,7 +23,11 @@ class Historial extends Component{
     axios.get('http://localhost:1337/impresion?sort=updatedAt DESC')
       .then((response) => {
         const impresiones = response.data;
-        this.setState({impresiones: impresiones})
+        this.setState({
+          impresiones: impresiones,
+          impresionesFilter: impresionesFilter,
+        })
+        console.log(this.state.impresiones);
     });
   }
 
@@ -32,15 +36,14 @@ class Historial extends Component{
   }
 
   handleDateRange(dateRange){
-    this.setState({dateRange: dateRange});
-    const impresionesFilter = this.state.impresiones.filter(function (a) {
+    const impresionesFilter = this.state.impresiones.filter((a) => {
             const date = new Date(a.createdAt) || {};
-            // filter this dates by startDate and endDate
-            //var hitDateMatches = hitDates.filter(function(date) { return date >= startDate && date <= endDate });
-            // if there is more than 0 results keep it. if 0 then filter it away
-            //return hitDateMatches.length>0;
+            return date >= dateRange[0] && date <= dateRange[1];
         });
-        console.log(impresionesFilter);
+    this.setState({
+      dateRange: dateRange,
+      impresionesFilter: impresionesFilter,
+    });
   }
 
   render(){
