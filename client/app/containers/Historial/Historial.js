@@ -32,7 +32,6 @@ class Historial extends Component{
 
   searchUpdated (term) {
     this.setState({searchTerm: term});
-    console.log(term);
   }
 
   handleDateRange(dateRange){
