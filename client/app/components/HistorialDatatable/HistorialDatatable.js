@@ -101,6 +101,7 @@ export default class HistorialDatatable extends Component {
         rowsCount={this.state.rows.length}
         minHeight={500}
         onRowUpdated={data => this.handleRowUpdated(data)}
+        isScrolling={false}
       />
     )
   }

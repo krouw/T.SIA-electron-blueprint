@@ -33,3 +33,4 @@
 @import "./components/Header/header.css";
 @import "./components/Navbar/Navbar.css";
 @import "./containers/Historial/Historial.css";
+@import "./components/HistorialDatatable/HistorialDatatable.css";

@@ -1,4 +1,4 @@
-// flow-typed signature: fa68b43793a5b49a2b3971a21e0bee63
+// flow-typed signature: f37e3c2b141798805747b41dbcd2910f
 // flow-typed version: <<STUB>>/@blueprintjs/core_v^1.3.1/flow_v0.37.0
 
 /**
@@ -83,10 +83,6 @@ declare module '@blueprintjs/core/dist/components/alert/alert' {
 }
 
 declare module '@blueprintjs/core/dist/components/breadcrumbs/breadcrumb' {
-  declare module.exports: any;
-}
-
-declare module '@blueprintjs/core/dist/components/button/abstractButton' {
   declare module.exports: any;
 }
 
@@ -330,9 +326,6 @@ declare module '@blueprintjs/core/dist/components/alert/alert.js' {
 }
 declare module '@blueprintjs/core/dist/components/breadcrumbs/breadcrumb.js' {
   declare module.exports: $Exports<'@blueprintjs/core/dist/components/breadcrumbs/breadcrumb'>;
-}
-declare module '@blueprintjs/core/dist/components/button/abstractButton.js' {
-  declare module.exports: $Exports<'@blueprintjs/core/dist/components/button/abstractButton'>;
 }
 declare module '@blueprintjs/core/dist/components/button/buttons.js' {
   declare module.exports: $Exports<'@blueprintjs/core/dist/components/button/buttons'>;
