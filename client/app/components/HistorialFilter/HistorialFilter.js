@@ -25,7 +25,7 @@ export default class HistorialFilter extends Component {
     this.props.searchUpdated(e);
   }
 
-  handleDateChange(dateRange){
+  handleDateRange(dateRange){
     this.props.handleDateChange(dateRange);
   }
 
@@ -33,7 +33,7 @@ export default class HistorialFilter extends Component {
     let popoverContent = (
             <div>
               <DateRangePicker
-                onChange={(dateRange) => this.handleDateChange(dateRange)}
+                onChange={(dateRange) => this.handleDateRange(dateRange)}
               />
             </div>
         );

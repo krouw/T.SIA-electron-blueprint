@@ -44,7 +44,7 @@ class Historial extends Component{
     this.setState({searchTerm: term});
   }
 
-  handleDateChange(dateRange){
+  handleDateRange(dateRange){
     this.setState({dateRange: dateRange});
   }
 
@@ -58,7 +58,7 @@ class Historial extends Component{
       <div>
         <HistorialFilter
           searchUpdated={term => this.searchUpdated(term)}
-          handleDateChange={dateRange => this.handleDateChange(dateRange)}
+          handleDateChange={dateRange => this.handleDateRange(dateRange)}
           dateRange={this.state.dateRange}
         />
         <HistorialDatatable />
