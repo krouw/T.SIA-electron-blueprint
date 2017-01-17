@@ -22,21 +22,8 @@ class Historial extends Component{
     const allImpresiones = [];
     axios.get('http://localhost:1337/impresion?sort=updatedAt DESC')
       .then((response) => {
-        var users = response.data;
-        var impresiones = users.map(function(impresion){
-          var aux ={
-            fecha: moment(impresion.createdAt).format('DD/MM/YYYY'),
-            rut: impresion.user.rut,
-            nombre: impresion.user.name,
-            rol: impresion.user.rol,
-            asignatura: impresion.asignatura,
-            observacion: impresion.observacion,
-            hojas: impresion.cantidad,
-            id: impresion.id,
-          }
-        allImpresiones.push(aux);
-        });
-        this.setState({impresiones: allImpresiones})
+        const impresiones = response.data;
+        this.setState({impresiones: impresiones})
     });
   }
 
@@ -46,14 +33,18 @@ class Historial extends Component{
 
   handleDateRange(dateRange){
     this.setState({dateRange: dateRange});
-  }
-
-  dateGenerate(dateRange){
-
+    const impresionesFilter = this.state.impresiones.filter(function (a) {
+            const date = new Date(a.createdAt) || {};
+            // filter this dates by startDate and endDate
+            //var hitDateMatches = hitDates.filter(function(date) { return date >= startDate && date <= endDate });
+            // if there is more than 0 results keep it. if 0 then filter it away
+            //return hitDateMatches.length>0;
+        });
+        console.log(impresionesFilter);
   }
 
   render(){
-      const filteredImpre = this.state.impresiones.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    const filteredImpre = this.state.impresiones.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
       <div>
         <HistorialFilter
