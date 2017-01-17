@@ -87,4 +87,5 @@ export default class HistorialFilter extends Component {
 HistorialFilter.propsTypes = {
   searchUpdated: React.PropTypes.func.isRequired,
   handleDateChange: React.PropTypes.func.isRequired,
+  dateRange: React.PropTypes.array.isRequired,
 }

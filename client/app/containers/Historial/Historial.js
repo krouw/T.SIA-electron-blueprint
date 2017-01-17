@@ -21,13 +21,12 @@ class Historial extends Component{
   componentDidMount(){
     const allImpresiones = [];
     axios.get('http://localhost:1337/impresion?sort=updatedAt DESC')
-      .then((response) => {
+      .then( response => {
         const impresiones = response.data;
         this.setState({
           impresiones: impresiones,
-          impresionesFilter: impresionesFilter,
+          impresionesFilter: impresiones,
         })
-        console.log(this.state.impresiones);
     });
   }
 
@@ -47,7 +46,7 @@ class Historial extends Component{
   }
 
   render(){
-    const filteredImpre = this.state.impresiones.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    const filteredImpre = this.state.impresionesFilter.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
       <div>
         <HistorialFilter
@@ -55,7 +54,9 @@ class Historial extends Component{
           handleDateChange={dateRange => this.handleDateRange(dateRange)}
           dateRange={this.state.dateRange}
         />
-        <HistorialDatatable />
+        <HistorialDatatable
+          impresiones={filteredImpre}
+         />
       </div>
     )
   }
