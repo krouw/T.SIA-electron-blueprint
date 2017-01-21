@@ -9,83 +9,55 @@ const rowGetter = function(i){
 };
 
 const columns = [
-{
-  key: 'fecha',
-  name: 'Fecha',
-  sortable: true,
-  width: 105
-},
+
 {
   key: 'nombre',
   name: 'Nombre',
   sortable : true,
-  width: 220
+  width: 300,
+  textAlign: 'left',
 },
 {
   key: 'rut',
   name: 'Rut',
   sortable : true,
-  width: 105
+
 },
 {
   key: 'rol',
   name: 'Rol',
   sortable : true,
-  width: 110
+
 },
 {
   key: 'carrera',
   name: 'Carrera',
   sortable : true,
-  width: 80
-},
-{
-  key: 'asignatura',
-  name: 'Asignatura',
-  sortable : true,
-  width: 150
-},
-{
-  key: 'observacion',
-  name: 'Observacion',
-  width: 210,
-  textAlign: 'left',
-  sortable : true,
-},
-{
-  key: 'hojas',
-  name: 'Hojas',
-  width: 80,
-  sortable : true
+
 }
 ]
 
-export default class HistorialDatatable extends Component {
+export default class UsuariosDatatable extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rows: this.props.impresiones,
+      rows: this.props.users,
     }
   }
 
   rowGetter(rowIdx){
-    const impresion = this.state.rows[rowIdx];
+    const user = this.state.rows[rowIdx];
     const aux ={
-      fecha: moment(impresion.createdAt).format('DD/MM/YYYY'),
-      rut: impresion.user.rut,
-      nombre: impresion.user.name,
-      rol: impresion.user.rol,
-      carrera: impresion.user.carrera,
-      asignatura: impresion.asignatura,
-      observacion: impresion.observacion,
-      hojas: impresion.cantidad,
-      id: impresion.id,
+      rut: user.rut,
+      nombre: user.name,
+      rol: user.rol,
+      carrera: user.carrera
     }
     return aux;
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({rows: nextProps.impresiones});
+    this.setState({rows: nextProps.users});
   }
 
   handleGridSort(sortColumn,sortDirection){
@@ -96,7 +68,7 @@ export default class HistorialDatatable extends Component {
         return (a[sortColumn] < b[sortColumn]) ? 1 : -1;
       }
     }
-    let rows = sortDirection === 'NONE' ? this.props.impresiones.slice(0) : this.state.rows.sort(comparer);
+    let rows = sortDirection === 'NONE' ? this.props.users.slice(0) : this.state.rows.sort(comparer);
     this.setState({rows : rows})
   }
 
@@ -124,6 +96,6 @@ export default class HistorialDatatable extends Component {
   }
 }
 
-HistorialDatatable.propsTypes = {
-  impresiones: React.PropTypes.array.isRequired,
+UsuariosDatatable.propsTypes = {
+  users: React.PropTypes.array.isRequired,
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
 import Impresiones from './Impresiones/Impresiones'
 import Historial from './Historial/Historial'
+import Usuarios from './Usuarios/Usuarios'
 
 const Home = props => {
   return (
@@ -20,7 +21,7 @@ const Home = props => {
         <Historial />
       </TabPanel>
       <TabPanel>
-          Hello
+          <Usuarios />
       </TabPanel>
       <TabPanel>
           Fourth panel

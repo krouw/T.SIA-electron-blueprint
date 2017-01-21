@@ -62,6 +62,7 @@ export default class HistorialFilter extends Component {
              type="text"
              onChange={ e => this.onChangeSearch(e) }
              value={this.state.search}
+             placeholder="Busqueda específica"
             />
           </label>
         </Col>
