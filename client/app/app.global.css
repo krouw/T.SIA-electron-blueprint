@@ -30,7 +30,9 @@
 
 @import "./containers/Login/Login.css";
 @import "./containers/Impresiones/Impresiones.css";
-@import "./components/Header/header.css";
-@import "./components/Navbar/Navbar.css";
+@import "./containers/Funcionarios/Funcionarios.css";
 @import "./containers/Historial/Historial.css";
+
+@import "./components/Header/header.css";
+@import "./components/Navbar/Navbar.css";;
 @import "./components/HistorialDatatable/HistorialDatatable.css";

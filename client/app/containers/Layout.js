@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
 import {Row,Col} from 'react-flexbox-grid';
-import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
+import { Dialog, Intent, Button } from '@blueprintjs/core';
 import Header from '../components/Header/Header';
 import ToastList from './ToastList/ToastList'
+import { connect } from 'react-redux'
 
 const Layout = props => {
   return (

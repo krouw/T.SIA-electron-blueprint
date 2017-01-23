@@ -1,0 +1,12 @@
+.Funcionarios{
+  width: 100%;
+}
+
+.Funcionarios thead th{
+  color: #106BA3;
+  font-weight: 400;
+}
+
+.Funcionario .Funcionario-Password{
+  -webkit-text-security: disc;
+}

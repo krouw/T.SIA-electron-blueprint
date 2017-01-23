@@ -4,6 +4,7 @@ import {Tabs, TabList, TabPanel, Tab} from '@blueprintjs/core';
 import Impresiones from './Impresiones/Impresiones'
 import Historial from './Historial/Historial'
 import Usuarios from './Usuarios/Usuarios'
+import Funcionarios from './Funcionarios/Funcionarios'
 
 const Home = props => {
   return (
@@ -24,7 +25,7 @@ const Home = props => {
           <Usuarios />
       </TabPanel>
       <TabPanel>
-          Fourth panel
+          <Funcionarios />
       </TabPanel>
     </Tabs>
   );

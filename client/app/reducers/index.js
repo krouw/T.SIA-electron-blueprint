@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   Toasts,
   Contador,
   routing,
-  auth
+  auth,
 });
 
 export default rootReducer;
