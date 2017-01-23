@@ -78,6 +78,13 @@ class ImpresionesNuevo extends Component {
             message: 'Usuario no Encontrado'
           })
         }
+        if(err.response.status === 400){
+          this.props.addToast({
+            iconName: "warning-sign",
+            intent: Intent.DANGER,
+            message: 'Debe llenar todos los campos de impresion'
+          })
+        }
       }
     );
     this.setState({disabled: false})
@@ -151,6 +158,7 @@ class ImpresionesNuevo extends Component {
                 className="pt-input"
                 type="text"
                 value={this.state.name}
+                placeholder="Nombre completo del usuario"
                 dir="auto"
                 required="true"
                 />
@@ -167,6 +175,7 @@ class ImpresionesNuevo extends Component {
                 type="text"
                 dir="auto"
                 required="true"
+                placeholder="Estudiante-Docente"
                 disabled = {this.state.disabled}/>
             </label>
           </Col>
@@ -181,6 +190,7 @@ class ImpresionesNuevo extends Component {
                 type="text"
                 dir="auto"
                 required="true"
+                placeholder="2130-2141-otro"
                 disabled = {this.state.disabled}/>
             </label>
           </Col>
@@ -204,11 +214,17 @@ class ImpresionesNuevo extends Component {
             <label className="pt-label">
               Cantidad Hojas
               <input
+                style={{textAlign:"center"}}
                 onChange={ e => this.onChange(e) }
                 name="cantidad"
                 value={this.state.cantidad}
+                type="number"
+                min="1"
+                placeholder="Cantidad minima 1"
                 className="pt-input"
-                type="text" dir="auto" />
+                dir="auto"
+                required="true"
+                />
             </label>
           </Col>
           <Col xs={12} sm={8} className="Impresiones-Content">
@@ -219,7 +235,11 @@ class ImpresionesNuevo extends Component {
                 name="asignatura"
                 value={this.state.asignatura}
                 className="pt-input"
-                type="text" dir="auto" />
+                type="text"
+                dir="auto"
+                placeholder="Nombre asignatura en caso contrario - otro"
+                required="true"
+                />
             </label>
           </Col>
           <Col xs={12} className="Impresiones-Content">
@@ -230,7 +250,9 @@ class ImpresionesNuevo extends Component {
                 name="observacion"
                 value={this.state.observacion}
                 className="pt-input"
-                dir="auto"></textarea>
+                dir="auto"
+                placeholder="Descripcion breve o detallada de la solicitud"
+                ></textarea>
             </label>
           </Col>
         </Row>
