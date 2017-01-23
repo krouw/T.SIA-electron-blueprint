@@ -34,7 +34,7 @@ class Login extends Component {
 
 Login.propTypes = {
   loginServer: React.PropTypes.func.isRequired,
-  addToast: React.PropTypes.func.isRequired
+  addToast: React.PropTypes.func.isRequired,
 };
 
 export default connect(null,{ loginServer, addToast })(Login);

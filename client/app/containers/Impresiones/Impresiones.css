@@ -94,3 +94,10 @@
     margin-top: 0;
   }
 }
+
+@media (min-width: 1440px) {
+  .Impresiones-Contador p.is-active {
+    text-align: center;
+    padding-left: 1em;
+  }
+}
