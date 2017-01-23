@@ -73,4 +73,10 @@ class Funcionario extends Component{
   }
 }
 
+Funcionario.propTypes = {
+  funcionario: React.PropTypes.object.isRequired,
+  updateFuncionario: React.PropTypes.func.isRequired,
+  getDialog: React.PropTypes.func.isRequired,
+}
+
 export default Funcionario;

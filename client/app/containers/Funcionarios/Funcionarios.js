@@ -2,7 +2,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Funcionario from '../../components/Funcionario/Funcionario'
+import FuncionarioNuevo from '../../components/FuncionarioNuevo/FuncionarioNuevo'
 import { Dialog, Intent, Button } from '@blueprintjs/core';
+import { addToast } from '../../actions/Toasts'
+import { connect } from 'react-redux'
 
 class Funcionarios extends Component{
   constructor(props){
@@ -10,7 +13,7 @@ class Funcionarios extends Component{
     this.state = {
       funcionarios: [],
       DialogActive: false,
-      funcionario: '',
+      funcionario: {},
     }
   }
 
@@ -32,6 +35,17 @@ class Funcionarios extends Component{
     axios.put('http://localhost:1337/admin/'+funcionario.id,funcionario)
   }
 
+  addFuncionario(e){
+    console.log('dsadsa');
+    axios.get('http://localhost:1337/admin?sort=updatedAt DESC')
+      .then( response => {
+        const funcionarios = response.data;
+        this.setState({
+          funcionarios: funcionarios,
+        });
+      })
+  }
+
   getDialog(funcionario){
     this.setState({
       DialogActive: true,
@@ -39,7 +53,7 @@ class Funcionarios extends Component{
     })
   }
 
-  deleteUser(e){
+  deleteFuncionario(e){
     axios.delete('http://localhost:1337/admin/'+this.state.funcionario.id)
     .then( res => {
       this.toggleDialog(e);
@@ -48,7 +62,15 @@ class Funcionarios extends Component{
           const funcionarios = response.data;
           this.setState({
             funcionarios: funcionarios,
+            funcionario: {},
           });
+      });
+    },
+    err => {
+      this.props.addToast({
+        iconName: "pt-icon-cross",
+        intent: Intent.DANGER,
+        message: "Sin Conexión"
       });
     })
   }
@@ -65,6 +87,10 @@ class Funcionarios extends Component{
     });
     return (
       <div>
+        <FuncionarioNuevo
+          addFuncionario={ (e) => this.addFuncionario(e) }
+          addToast={this.props.addToast}
+        />
         <table className="Funcionarios pt-table">
           <thead>
             <th>Rut</th>
@@ -77,29 +103,33 @@ class Funcionarios extends Component{
             { funcionarios }
           </tbody>
         </table>
-          <Dialog
+        <Dialog
           iconName="person"
           isOpen={this.state.DialogActive}
           onClose={ e => this.toggleDialog(e) }
           title="Confirmación">
-            <div className="pt-dialog-body">
-              Eliminar al usuario {this.state.funcionario.name}
+          <div className="pt-dialog-body">
+            Eliminar al usuario {this.state.funcionario.name}
+          </div>
+          <div className="pt-dialog-footer">
+            <div className="pt-dialog-footer-actions">
+              <Button text="Cerrar"
+                onClick={ e => this.toggleDialog(e) } />
+              <Button
+                  className="pt-icon-cross"
+                  intent={Intent.DANGER}
+                  text="Eliminar"
+                  onClick={ e => this.deleteFuncionario(e) }/>
             </div>
-            <div className="pt-dialog-footer">
-                <div className="pt-dialog-footer-actions">
-                    <Button text="Cerrar"
-                      onClick={ e => this.toggleDialog(e) } />
-                    <Button
-                        className="pt-icon-cross"
-                        intent={Intent.DANGER}
-                        text="Eliminar"
-                        onClick={ e => this.deleteUser(e) }/>
-                </div>
-            </div>
-          </Dialog>
+          </div>
+        </Dialog>
       </div>
     )
   }
 }
 
-export default Funcionarios;
+Funcionarios.propTypes = {
+  addToast: React.PropTypes.func.isRequired,
+}
+
+export default connect(null, { addToast })(Funcionarios);
