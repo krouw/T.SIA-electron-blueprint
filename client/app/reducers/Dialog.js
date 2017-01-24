@@ -20,7 +20,7 @@ export default (state = initialState, action = {}) => {
         ButtonclassName: action.Dialog.className,
         Intent: action.Dialog.Intent,
         ButtonText: action.Dialog.ButtonText,
-        action: action.Dialog.handleButton,
+        payload: action.Dialog.handleButton,
       }
     case CLOSE_DIALOG:
       return {

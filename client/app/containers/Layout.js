@@ -18,7 +18,9 @@ const Layout = props => {
         </Col>
       </Row>
       <DialogRender
-        Dialog={props.Dialog} />
+        Dialog={props.Dialog}
+        closeDialog={props.closeDialog}
+        action={props.action}/>
     </section>
   );
 }

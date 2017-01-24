@@ -37,7 +37,6 @@ class Funcionarios extends Component{
   }
 
   addFuncionario(e){
-    console.log('dsadsa');
     axios.get('http://localhost:1337/admin?sort=updatedAt DESC')
       .then( response => {
         const funcionarios = response.data;

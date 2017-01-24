@@ -41,8 +41,8 @@ class Funcionario extends Component{
       message: "Desea eliminar al usuario "+this.state.name+"?",
       ButtonclassName: "pt-icon-cross",
       Intent: Intent.DANGER,
-      text: "Eliminar",
-      handleButton: () => this.props.deleteFuncionario(this.state.funcionario),
+      ButtonText: "Eliminar",
+      payload: this.state,
     }
     this.props.setDialog(Dialog);
   }

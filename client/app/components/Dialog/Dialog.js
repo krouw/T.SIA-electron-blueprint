@@ -19,7 +19,7 @@ const DialogRender = props => {
               className="pt-icon-cross"
               intent={props.Dialog.Intent}
               text={props.Dialog.ButtonText}
-              onClick={ e => props.handleButton() }/>
+              onClick={ e => props.Dialog.handleButton() }/>
         </div>
       </div>
     </Dialog>
@@ -29,7 +29,6 @@ const DialogRender = props => {
 DialogRender.propTypes = {
   Dialog: React.PropTypes.object.isRequired,
   closeDialog: React.PropTypes.func.isRequired,
-  handleButton: React.PropTypes.func.isRequired,
 }
 
 export default DialogRender;
