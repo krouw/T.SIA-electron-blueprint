@@ -5,6 +5,8 @@ import Funcionario from '../../components/Funcionario/Funcionario'
 import FuncionarioNuevo from '../../components/FuncionarioNuevo/FuncionarioNuevo'
 import { Dialog, Intent, Button } from '@blueprintjs/core';
 import { addToast } from '../../actions/Toasts'
+import { setDialog } from '../../actions/Dialog'
+import { deleteFuncionario } from '../../actions/Funcionario'
 import { connect } from 'react-redux'
 
 class Funcionarios extends Component{
@@ -12,7 +14,6 @@ class Funcionarios extends Component{
     super(props);
     this.state = {
       funcionarios: [],
-      DialogActive: false,
       funcionario: {},
     }
   }
@@ -46,13 +47,6 @@ class Funcionarios extends Component{
       })
   }
 
-  getDialog(funcionario){
-    this.setState({
-      DialogActive: true,
-      funcionario: funcionario,
-    })
-  }
-
   deleteFuncionario(e){
     axios.delete('http://localhost:1337/admin/'+this.state.funcionario.id)
     .then( res => {
@@ -82,7 +76,8 @@ class Funcionarios extends Component{
           key={funcionario.id}
           funcionario={funcionario}
           updateFuncionario={(funcionario) => this.updateFuncionario(funcionario)}
-          getDialog={(funcionario) => this.getDialog(funcionario)} />
+          setDialog={this.props.setDialog}
+          deleteFuncionario={this.props.deleteFuncionario}/>
       )
     });
     return (
@@ -103,26 +98,6 @@ class Funcionarios extends Component{
             { funcionarios }
           </tbody>
         </table>
-        <Dialog
-          iconName="person"
-          isOpen={this.state.DialogActive}
-          onClose={ e => this.toggleDialog(e) }
-          title="Confirmación">
-          <div className="pt-dialog-body">
-            Eliminar al usuario {this.state.funcionario.name}
-          </div>
-          <div className="pt-dialog-footer">
-            <div className="pt-dialog-footer-actions">
-              <Button text="Cerrar"
-                onClick={ e => this.toggleDialog(e) } />
-              <Button
-                  className="pt-icon-cross"
-                  intent={Intent.DANGER}
-                  text="Eliminar"
-                  onClick={ e => this.deleteFuncionario(e) }/>
-            </div>
-          </div>
-        </Dialog>
       </div>
     )
   }
@@ -130,6 +105,15 @@ class Funcionarios extends Component{
 
 Funcionarios.propTypes = {
   addToast: React.PropTypes.func.isRequired,
+  setDialog: React.PropTypes.func.isRequired,
+  deleteFuncionario: React.PropTypes.func.isRequired,
 }
 
-export default connect(null, { addToast })(Funcionarios);
+function mapDispatchToProps(dispatch){
+  return {
+    setDialog: (Dialog) => dispatch(setDialog(Dialog)),
+    deleteFuncionario: (funcionario) => dispatch(deleteFuncionario(funcionario)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Funcionarios);

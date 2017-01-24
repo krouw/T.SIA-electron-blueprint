@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import axios from 'axios'
-import { EditableText } from '@blueprintjs/core';
+import { EditableText, Intent } from '@blueprintjs/core';
 import isEmpty from 'lodash/isEmpty'
 
 class Funcionario extends Component{
@@ -35,7 +35,16 @@ class Funcionario extends Component{
   }
 
   handleDelete(e){
-    this.props.getDialog(this.state);
+    const Dialog = {
+      icon: "person",
+      title: "Confirmación",
+      message: "Desea eliminar al usuario "+this.state.name+"?",
+      ButtonclassName: "pt-icon-cross",
+      Intent: Intent.DANGER,
+      text: "Eliminar",
+      handleButton: () => this.props.deleteFuncionario(this.state.funcionario),
+    }
+    this.props.setDialog(Dialog);
   }
 
   render(){
@@ -76,7 +85,8 @@ class Funcionario extends Component{
 Funcionario.propTypes = {
   funcionario: React.PropTypes.object.isRequired,
   updateFuncionario: React.PropTypes.func.isRequired,
-  getDialog: React.PropTypes.func.isRequired,
+  setDialog: React.PropTypes.func.isRequired,
+  deleteFuncionario: React.PropTypes.func.isRequired,
 }
 
 export default Funcionario;
