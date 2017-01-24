@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import {Row,Col} from 'react-flexbox-grid';
-import { Dialog, Intent, Button } from '@blueprintjs/core';
 import Header from '../components/Header/Header';
 import ToastList from './ToastList/ToastList'
 import { connect } from 'react-redux'
