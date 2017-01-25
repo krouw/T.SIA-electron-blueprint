@@ -13,7 +13,7 @@ class Historial extends Component{
     this.state = {
       searchTerm: '',
       impresiones: [],
-      dateRange: [],
+      dateRange: [null,null],
       impresionesFilter: []
     }
 
@@ -47,7 +47,6 @@ class Historial extends Component{
   }
 
   render(){
-    //console.log(this.state.impresionesFilter);
     const filteredImpre = this.state.impresionesFilter.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     return (
       <div>
@@ -57,7 +56,7 @@ class Historial extends Component{
           dateRange={this.state.dateRange}
         />
         <HistorialDatatable
-            impresiones={filteredImpre}
+          impresiones={filteredImpre}
          />
       </div>
     )
