@@ -12,7 +12,6 @@ module.exports = {
 			if(err) return next(err);
 			if(!contador) return next(err);
 			res.json(contador);
-			//console.log(user);
 		});
 	},
 
