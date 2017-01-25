@@ -34,6 +34,8 @@ module.exports.routes = {
 
   'POST /user/:rut/impresion': 'ImpresionController.associateImpresionToUser',
   'GET /user/findUser/:rut': 'UserController.findUser',
+  'GET /contador/findContador/:createdAt': 'ContadorController.findContador',
+  'POST /impresion/pdf/:': 'ImpresionController.pdf',
 
   /***************************************************************************
   *                                                                          *

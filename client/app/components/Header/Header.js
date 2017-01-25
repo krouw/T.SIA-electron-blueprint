@@ -14,6 +14,9 @@ class Header extends Component {
     hashHistory.push('/')
   }
 
+  validateLogout (e){
+    axios.get('http://localhost:1337/contador?sort=updatedAt DESC')
+  }
   render() {
     return (
         <Row center="xs" className="Header pt-navbar" style={{margin:0}}>

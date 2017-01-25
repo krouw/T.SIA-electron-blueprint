@@ -56,7 +56,8 @@ class Historial extends Component{
           dateRange={this.state.dateRange}
         />
         <HistorialDatatable
-          impresiones={filteredImpre}
+            impresiones={filteredImpre}
+
          />
       </div>
     )
