@@ -31,16 +31,11 @@ class Header extends Component {
     hashHistory.push('/')
   }
 
-<<<<<<< HEAD
-  validateLogout (e){
-    axios.get('http://localhost:1337/contador?sort=updatedAt DESC')
-  }
-=======
+
   toggleDialog(e){
     this.setState({DialogActive: !this.state.DialogActive})
   }
 
->>>>>>> d5235fdb97c2cfee3d8f684045f5ac84d20c021f
   render() {
     return (
       <div>
