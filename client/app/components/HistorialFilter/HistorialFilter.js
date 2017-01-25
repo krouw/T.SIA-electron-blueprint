@@ -39,12 +39,22 @@ export default class HistorialFilter extends Component {
         var body = [];
         body.push(columns);
 
-        data.forEach( (row)=> {
-            var dataRow = [];
-            columns.forEach( (column)=> {
-                dataRow.push(row[column].toString());
-            })
-            body.push(dataRow);
+        data.forEach( row => {
+          const aux ={
+            Fecha: moment(row.createdAt).format('DD/MM/YYYY'),
+            Rut: row.user.rut,
+            Nombre: row.user.name,
+            Rol: row.user.rol,
+            Carrera: row.user.carrera,
+            Asignatura: row.asignatura,
+            Observacion: row.observacion,
+            Hojas: row.cantidad,
+          }
+          var dataRow = [];
+          columns.forEach( (column)=> {
+              dataRow.push(aux[column].toString());
+          })
+          body.push(dataRow);
         });
 
       return body;
@@ -54,7 +64,7 @@ export default class HistorialFilter extends Component {
         return {
             table: {
                 headerRows: 1,
-                widths: [ 50, 90, 55 ,50, 40, 70, 80, 30 ],
+                widths: [ 60, 90, 55 ,50, 40, 70, 80, 30 ],
                 body: buildTableBody(data,columns)
             }
         };
@@ -67,8 +77,8 @@ export default class HistorialFilter extends Component {
               const json = response.data;
               var cI = json[0].contadorInicial
               var cF = json[0].contadorFinal
-              for(var i=1; i<json.length; i++){
-                impresFil.push(json[i]);
+              for(var i=0; i<this.props.impresiones.length; i++){
+                impresFil.push(this.props.impresiones[i]);
               }
               var dd = {
                       //header: 'Departamento de Informática - UTEM',
@@ -143,16 +153,24 @@ export default class HistorialFilter extends Component {
                         }
                       },
                     };
-                pdfMake.createPdf(dd).download('optionalName.pdf');
+                pdfMake.createPdf(dd).download(Init.format("DDMMYYYY")+'-'+ Finish.format("DDMMYYYY")+'.pdf');
           },
           error => {
-            console.log("no se encontro");
+            this.props.addToast({
+              iconName: "warning-sign",
+              intent: Intent.DANGER,
+              message: 'No se encontraron registros'
+            })
           }
       );
 
       }
       else{
-        console.log('invalido');
+        this.props.addToast({
+          iconName: "warning-sign",
+          intent: Intent.DANGER,
+          message: 'Debe ingresar un rango de fechas válido'
+        })
       }
   }
 

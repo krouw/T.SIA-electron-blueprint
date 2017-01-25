@@ -4,6 +4,8 @@ import HistorialFilter from '../../components/HistorialFilter/HistorialFilter'
 import axios from 'axios'
 import moment from 'moment'
 import HistorialDatatable from '../../components/HistorialDatatable/HistorialDatatable'
+import { connect } from 'react-redux'
+import { addToast } from '../../actions/Toasts'
 
 const KEYS_TO_FILTERS = ['fecha', 'user.rut', 'user.name','user.rol','asignatura']
 
@@ -37,8 +39,8 @@ class Historial extends Component{
 
   handleDateRange(dateRange){
     const impresionesFilter = this.state.impresiones.filter((a) => {
-            const date = new Date(a.createdAt) || {};
-            return date >= dateRange[0] && date <= dateRange[1];
+            const date = moment(a.createdAt) || {};
+            return date.format("YYYY-MM-DD") >= moment(dateRange[0]).format("YYYY-MM-DD") && date.format("YYYY-MM-DD") <= moment(dateRange[1]).format("YYYY-MM-DD");
         });
     this.setState({
       dateRange: dateRange,
@@ -54,6 +56,8 @@ class Historial extends Component{
           searchUpdated={term => this.searchUpdated(term)}
           handleDateChange={dateRange => this.handleDateRange(dateRange)}
           dateRange={this.state.dateRange}
+          addToast={this.props.addToast}
+          impresiones={filteredImpre}
         />
         <HistorialDatatable
           impresiones={filteredImpre}
@@ -63,4 +67,4 @@ class Historial extends Component{
   }
 }
 
-export default Historial;
+export default connect(null, { addToast })(Historial);

@@ -34,7 +34,7 @@ module.exports = {
 		 		var Finish = moment(req.param('Finish'));
 
 		 	 	Impresion.find({
-		 			createdAt: { '>': Init.format("YYYY-MM-DDT23:59:59"),
+		 			createdAt: { '>': Init.format("YYYY-MM-DDT00:00:00"),
 		 			'<=': Finish.format("YYYY-MM-DDT23:59:59") } })
 					.populate('user')
 					.then(function (impresiones){
