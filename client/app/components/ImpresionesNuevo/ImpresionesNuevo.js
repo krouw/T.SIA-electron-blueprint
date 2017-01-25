@@ -82,7 +82,7 @@ class ImpresionesNuevo extends Component {
           this.props.addToast({
             iconName: "warning-sign",
             intent: Intent.DANGER,
-            message: 'Debe llenar todos los campos de impresion'
+            message: 'Se deben llenar todos los campos'
           })
         }
       }
@@ -190,7 +190,7 @@ class ImpresionesNuevo extends Component {
                 type="text"
                 dir="auto"
                 required="true"
-                placeholder="2130-2141-otro"
+                placeholder="2130 - 2141 - otro"
                 disabled = {this.state.disabled}/>
             </label>
           </Col>
@@ -237,7 +237,7 @@ class ImpresionesNuevo extends Component {
                 className="pt-input"
                 type="text"
                 dir="auto"
-                placeholder="Nombre asignatura en caso contrario - otro"
+                placeholder="Nombre asignatura - otro"
                 required="true"
                 />
             </label>

@@ -1,5 +1,5 @@
 {
-"name": "electron-react-boilerplate",
+  "name": "electron-react-boilerplate",
   "productName": "ElectronReact",
   "version": "0.10.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
@@ -171,6 +171,7 @@
     "jwt-decode": "^2.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
+    "pdfmake": "^0.1.24",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.1",
     "react-data-grid": "^1.0.81",
