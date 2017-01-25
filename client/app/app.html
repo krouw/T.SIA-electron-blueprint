@@ -18,6 +18,8 @@
   </head>
   <body>
     <div id="root"></div>
+    <script src="./pdfmake.min.js"></script>
+    <script src="./vfs_fonts.js"></script>
     <script>
       {
         const script = document.createElement('script');
@@ -28,6 +30,67 @@
         // HACK: Writing the script path should be done with webpack
         document.body.appendChild(script);
       }
+    </script>
+    <script>
+    var dd = {
+      header: 'Departamento de Informática - UTEM',
+      content: [
+        {
+          text: 'Reporte de impresiones',
+          style: 'header',
+          alignment: 'center'
+        },
+        {
+          text: '19/01/2017 - 24/01/2017',
+          style: 'subheader',
+          alignment: 'center'
+        },
+        {
+          text: 'Contador Inicial 2000',
+          style: 'contador',
+          alignment: 'right'
+        },
+        {
+          layout: 'lightHorizontalLines', // optional
+          table: {
+            // headers are automatically repeated if the table spans over multiple pages
+            // you can declare how many rows should be treated as headers
+            headerRows: 1,
+            widths: [ 55, 100, 'auto' ,'auto', 150, 40 ],
+
+            body: [
+              [ 'Fecha', 'Nombre','Rut', 'Carrera', 'Asignatura', 'Hojas'],
+              [ '22/01/2017', 'Felipe Rubio','18463251', '2130', 'Ingeneria software', '10' ],
+              [ '22/01/2017', 'Felipe Rubio','18463251', '2130', 'Ingeneria software', '10' ],
+            ]
+          }
+        },
+           {
+          text: 'Contador Final 4000',
+          style: 'contador',
+          alignment: 'right'
+        },
+      ],
+      styles: {
+        header:{
+          fontSize: 18,
+          bold: true,
+          alignment: 'justify',
+          marginBottom: 24,
+        },
+        subheader:{
+          fontSize: 14,
+          bold: true,
+          alignment: 'justify',
+          marginBottom: 16,
+        },
+        contador:{
+          fontSize: 12,
+          margin: 16,
+        }
+      },
+    };
+     pdfMake.createPdf(dd).download('optionalName.pdf');
     </script>
   </body>
 </html>
