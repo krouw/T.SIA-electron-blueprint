@@ -16,6 +16,7 @@ class Historial extends Component{
       dateRange: [],
       impresionesFilter: []
     }
+
   }
 
   componentDidMount(){
@@ -57,7 +58,6 @@ class Historial extends Component{
         />
         <HistorialDatatable
             impresiones={filteredImpre}
-
          />
       </div>
     )

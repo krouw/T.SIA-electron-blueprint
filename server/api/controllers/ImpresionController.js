@@ -32,9 +32,10 @@ module.exports = {
 	 pdf: function(req,res,next){
 		 		var Init = moment(req.param('Init'));
 		 		var Finish = moment(req.param('Finish'));
+
 		 	 	Impresion.find({
-		 			createdAt: { '>': Init.format(),
-		 			'<': Finish.add(23,'hour').format() } })
+		 			createdAt: { '>': Init.format("YYYY-MM-DDT23:59:59"),
+		 			'<=': Finish.format("YYYY-MM-DDT23:59:59") } })
 					.populate('user')
 					.then(function (impresiones){
 		 					if(_.isEmpty(impresiones)){
@@ -53,14 +54,14 @@ module.exports = {
 									pdfRender.push(object);
 									impresiones.map(function(impresion){
 											var object = {
-											fecha: moment(impresion.createdAt).format("DD/MM/YYYY"),
-											name: impresion.user.name,
-											rut: impresion.user.rut,
-											rol: impresion.user.rol,
-											carrera: impresion.user.carrera,
-											asignatura: impresion.asignatura,
-											observacion: impresion.observacion,
-											hojas: impresion.cantidad,
+											Fecha: moment(impresion.createdAt).format("DD/MM/YY"),
+											Nombre: impresion.user.name,
+											Rut: impresion.user.rut,
+											Rol: impresion.user.rol,
+											Carrera: impresion.user.carrera,
+											Asignatura: impresion.asignatura,
+											Observacion: impresion.observacion,
+											Hojas: impresion.cantidad,
 										}
 										pdfRender.push(object);
 									})
