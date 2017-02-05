@@ -5,7 +5,6 @@ import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux'
 import routes from './routes';
 import configureStore from './store/configureStore';
-
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/auth'
 import setAuthorizacionToken from './utils/setAuthorizacionToken'

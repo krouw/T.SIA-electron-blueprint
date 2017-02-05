@@ -47,7 +47,6 @@ class Header extends Component {
               </Col>
               <Col xs={6}>
                 <Link className="pt-button pt-minimal pt-icon-home"></Link>
-                <Link className="pt-button pt-minimal pt-icon-user"></Link>
                 <a className="pt-button pt-minimal pt-icon-delete" onClick={e => this.logout(e)}></a>
               </Col>
             </Row>

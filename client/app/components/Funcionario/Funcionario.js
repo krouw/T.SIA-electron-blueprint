@@ -35,16 +35,7 @@ class Funcionario extends Component{
   }
 
   handleDelete(e){
-    const Dialog = {
-      icon: "person",
-      title: "Confirmación",
-      message: "Desea eliminar al usuario "+this.state.name+"?",
-      ButtonclassName: "pt-icon-cross",
-      Intent: Intent.DANGER,
-      ButtonText: "Eliminar",
-      payload: this.state,
-    }
-    this.props.setDialog(Dialog);
+    this.props.setDialog(this.state);
   }
 
   render(){
