@@ -1,4 +1,22 @@
-# electron-react-boilerplate
+# Sistema de Impresiones UTEM (SIU)
+
+###### Trabajo Final Taller de Sistemas de Información UTEM
+
+###### Stack
+ + Electron ( Multiplatforms Apps )
+ + React ( WebUI )
+ + Redux ( State management )
+ + SailsJS ( RESTFul API Generate )
+ + BlueprintJS ( CSS y JS Components )
+ 
+###### Integrantes
+ + Marco Guzmán
+ + Carlos Riquelme
+ + Felipe Rubio
+ + Alberto Vasquez
+ + Alvaro Vasquez
+
+*Agradecimientos a electron-react-boilerplate*
 
 [![Build Status][travis-image]][travis-url]
 [![Appveyor Build Status][appveyor-image]][appveyor-url]
